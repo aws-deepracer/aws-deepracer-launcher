@@ -11,6 +11,6 @@ If you are a first-time user, do the following:
 
 1. Read [What Is AWS DeepRacer](https://docs.aws.amazon.com/deepracer/latest/developerguide/what-is-deepracer.html). The documentation for AWS DeepRacer. It provides more details about the AWS DeepRacer vehicle, training and evaluating models, and more.
 1. Read [Getting Started with AWS DeepRacer](getting-started.md). In this tutorial, you learn how to install the latest DeepRacer code and then build and run the DeepRacer application.
-1. Explore the [Follow Me sample application](https://github.com/aws-racer/). This sample changes the behavior of the vehicle application. Your vehicle will try to follow you as you move about a room.
-1. Explore the [SLAM with ROS Noetic on Ubuntu 2004 sample application](https://github.com/aws-racer/). This sample application uses SLAM with RealSense™ D435/D435i camera on ROS to map and localize an environment.
+1. Explore the [Follow Me sample project](https://github.com/aws-racer/aws-deepracer-follow-me-sample-project). This sample project changes the behavior of the vehicle application. Your vehicle will try to follow you as you move about a room.
+1. Explore the [Mapping sample project with ROS Noetic on Ubuntu 20.04](https://github.com/aws-racer/aws-deepracer-mapping-sample-project). This sample project uses SLAM with RealSense™ D435/D435i camera on ROS to map and localize an environment.
 1. Learn about the [Robot Operating System (ROS) 2](http://wiki.ros.org/doc/ROS2). The AWS DeepRacer application is based on [ROS2 Foxy](https://index.ros.org/doc/ros2/Releases/Release-Foxy-Fitzroy/). 
