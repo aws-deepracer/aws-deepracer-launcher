@@ -54,7 +54,7 @@ The DeepRacer application includes packages for perception, decision, navigation
 **Perception**
 
 * [camera_node](https://github.com/aws-racer/aws-deepracer-camera-pkg) - reads and publishes data from the camera. 
-* [rplidar_node](https://github.com/aws-racer/aws-deepracer-sensor-fusion-pkg) - reads and publishes LiDAR data from the connected RPLidar device.
+* [rplidar_node](https://github.com/youngday/rplidar_ros2) - an open source package that supports reading and publishing LiDAR data from the connected RPLidar device.
 * [sensor_fusion_node](https://github.com/aws-racer/aws-deepracer-sensor-fusion-pkg) - combines and published camera and LiDAR data (if one is present) as a single message.
 
 **Decision**
@@ -68,15 +68,18 @@ The DeepRacer application includes packages for perception, decision, navigation
 
 **General Application Support**
 
-* [async_web_server_cpp](https://github.com/aws-racer/aws-deepracer-webserver-pkg) - an open source package that supports streaming display_mjpeg and overlay_mjpeg to the front end as a camera stream.
+* [async_web_server_cpp](https://github.com/GT-RAIL/async_web_server_cpp) - an open source package that supports streaming display_mjpeg and overlay_mjpeg to the front end as a camera stream.
 * [ctrl_node](https://github.com/aws-racer/aws-deepracer-ctrl-pkg) - as the main node, it exposes services used by webserver backend API calls.
-* [software_update_node](https://github.com/aws-racer/webserver_pkg) - responsible for the software update system managing the aws-deepracer-core, aws-deepracer-util, aws-deepracer-sample-models, and aws-deepracer-webserver packages.
+* [software_update_node](https://github.com/aws-racer/aws-deepracer-systems-pkg) - responsible for the software update system managing the aws-deepracer-core, aws-deepracer-util, aws-deepracer-sample-models, and aws-deepracer-webserver packages.
+* [model_loader_node](https://github.com/aws-racer/aws-deepracer-systems-pkg) - responsible for extracting tar.gz files from USB and those uploaded from console.
+* [otg_control_node](https://github.com/aws-racer/aws-deepracer-systems-pkg) - responsible to enable and disable OTG connection and publish connection status.
+* [network_monitor_node](https://github.com/aws-racer/aws-deepracer-systems-pkg) - responsible to connect to WiFi based on configuration file on USB and communicate the network connection status.
 * [device_info_node](https://github.com/aws-racer/aws-deepracer-device-info-pkg) - provides hardware and software information.
 * [battery_node](https://github.com/aws-racer/i2c_pkg) - reads and publishes battery level information.
 * [model_optimizer_node](https://github.com/aws-racer/aws-deepracer-model-optimizer-pkg) - runs the model optimizer on the selected machine learning model.
 * [status_led_node](https://github.com/aws-racer/aws-deepracer-status-led-pkg) - controls blinking and solid light functionality for the status LEDs. 
 * [usb_monitor_node](https://github.com/aws-racer/aws-deepracer-usb-monitor-pkg) - monitors USB connections and published a notification if a required file is found. 
-* [web_video_server](https://github.com/aws-racer/aws-deepracer-webserver-pkg) - streams the images from a topic through the webserver to the front end.
+* [web_video_server](https://github.com/RobotWebTools/web_video_server/pull/111) - an open source package that supports streaming the images from a topic through the webserver to the front end.
 * [webserver_node](https://github.com/aws-racer/aws-deepracer-webserver-pkg) - a collection of FLASK APIs called from the front end. These APIs call ROS services and return results to the front end.
 
 ## Building the core packages

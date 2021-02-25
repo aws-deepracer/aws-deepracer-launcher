@@ -344,6 +344,6 @@ The DeepRacer device is open loop system and do not have a feedback to recognize
 
 ## Summary
 
-This component is one of the core features of the AWS DeepRacer application. The Follow-me sample application developed, leverages most of the concepts used in the manual mode to build the **follow_me_navigation** node. You can learn more about the Follow-Me application [here](http://link).
+This component is one of the core features of the AWS DeepRacer application. The [Follow Me](https://github.com/aws-racer/aws-deepracer-follow-me-sample-project) sample project developed, leverages most of the concepts used in the manual mode to build the **follow_me_navigation** node. You can learn more about the Follow Me sample project [here](https://github.com/aws-racer/aws-deepracer-follow-me-sample-project).
 
 
