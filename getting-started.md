@@ -1,14 +1,13 @@
 # Getting Started with DeepRacer OpenSource
 
-The DeepRacer device has all the required libraries and packages preinstalled to build 
-the ROS2 Foxy packages. We recommend you build the ROS2 packages on the device when 
+The DeepRacer device has all the required libraries and packages preinstalled to run the core application. We recommend you build the ROS2 packages on the device when 
 changing core packages or building new packages. This will make it easier to develop, 
 debug, and test the application.
 
 If your device is not upgraded to the latest software stack with Ubuntu 20.04 and ROS2 
-Foxy, you can follow the instructions *here* to flash the device with latest software 
+Foxy, you can follow the instructions [here](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-vehicle-factory-reset-instructions.html) to flash the device with upgraded software 
 stack. After flashing the device with the new image, the software stack should be 
-upgraded to **Ubuntu 20.04 Focal Fossa**, **Intel® OpenVINO™ toolkit 2021.1.110**, 
+updated to **Ubuntu 20.04 Focal Fossa**, **Intel® OpenVINO™ toolkit 2021.1.110**, 
 **ROS2 Foxy Fitzroy** and **Python 3.8**.
 
 The AWS DeepRacer device with the upgraded OpenSource software stack contains the 
@@ -17,7 +16,7 @@ following software preinstalled:
 1. **ROS2 Foxy and dependencies:** The DeepRacer device has the ROS2 Foxy 
 (**ros-foxy-desktop**), CV Bridge(**ros-foxy-cv-bridge**), image transport 
 (**ros-foxy-image-transport**), standard messages (**ros-foxy-std-msgs**) and sensor 
-messages (**ros-foxy-sensor-msgs**) installed. For more informatiom about
+messages (**ros-foxy-sensor-msgs**) installed. For more information about
 installing ROS2 Foxy, see [Installing ROS 2 via Debian Packages](https://index.ros.org/doc/ros2/Installation/Foxy/Linux-Install-Debians/).
 
 1. **Intel OpenVino toolkit and its dependencies:** The AWS DeepRacer core application 
@@ -40,7 +39,7 @@ AVX support to work on the AWS DeepRacer device.
     4. **aws-deepracer-core** - This debian package installs all the ROS2 Foxy packages 
     required to provide the functionalities for AWS DeepRacer core application. 
 
-Before you pull the changes from the GitHub repositories, make sure you have the device setup completed and have the latest version of the AWS DeepRacer. For more information about the device setup and software update system, see [Getting Started](https://aws.amazon.com/deepracer/getting-started/) quick start guide for the DeepRacer and DeepRacer Evo devices.
+Before you pull the changes from the GitHub repositories, make sure you have the device setup completed and have the latest version of the AWS DeepRacer. For more information about the device setup and software update system, see [Getting Started](https://aws.amazon.com/deepracer/getting-started/) quick start guide for the AWS DeepRacer and AWS DeepRacer Evo devices.
 
 ## DeepRacer Core Components
 
@@ -50,7 +49,7 @@ The DeepRacer application includes packages for perception, decision, navigation
 
 * [camera_node](https://github.com/aws-racer/aws-deepracer-camera-pkg) - reads and publishes data from the camera. 
 * [rplidar_node](https://github.com/youngday/rplidar_ros2) - an open source package that supports reading and publishing LiDAR data from the connected RPLidar device.
-* [sensor_fusion_node](https://github.com/aws-racer/aws-deepracer-sensor-fusion-pkg) - combines and published camera and LiDAR data (if one is present) as a single message.
+* [sensor_fusion_node](https://github.com/aws-racer/aws-deepracer-sensor-fusion-pkg) - combines and publishes camera and LiDAR data (if one is present) as a single message.
 
 **Decision**
 
@@ -59,25 +58,28 @@ The DeepRacer application includes packages for perception, decision, navigation
 **Navigation**
 
 * [deepracer_navigation_node](https://github.com/aws-racer/aws-deepracer-navigation-pkg) - collects model inference results and publishes a servo message with throttle and steering angle values based on the action space for the selected machine learning model.
-* [servo_node](https://github.com/aws-racer/aws-deepracer-servo-pkg) - maps the input servo throttle and servo angle ratios to raw PWM models and sent to the servos to move the vehicle.
+* [servo_node](https://github.com/aws-racer/aws-deepracer-servo-pkg) - maps the input servo throttle and servo angle ratios to raw PWM values thats set on the servo/motor to move the vehicle.
 
 **General Application Support**
 
 * [async_web_server_cpp](https://github.com/GT-RAIL/async_web_server_cpp) - an open source package that supports streaming display_mjpeg and overlay_mjpeg to the front end as a camera stream.
 * [ctrl_node](https://github.com/aws-racer/aws-deepracer-ctrl-pkg) - as the main node, it exposes services used by webserver backend API calls.
 * [software_update_node](https://github.com/aws-racer/aws-deepracer-systems-pkg) - responsible for the software update system managing the aws-deepracer-core, aws-deepracer-util, aws-deepracer-sample-models, and aws-deepracer-webserver packages.
-* [model_loader_node](https://github.com/aws-racer/aws-deepracer-systems-pkg) - responsible for extracting tar.gz files from USB and those uploaded from console.
+* [model_loader_node](https://github.com/aws-racer/aws-deepracer-systems-pkg) - responsible for extracting tar.gz model files from USB and those uploaded from console.
 * [otg_control_node](https://github.com/aws-racer/aws-deepracer-systems-pkg) - responsible to enable and disable OTG connection and publish connection status.
-* [network_monitor_node](https://github.com/aws-racer/aws-deepracer-systems-pkg) - responsible to connect to WiFi based on configuration file on USB and communicate the network connection status.
-* [device_info_node](https://github.com/aws-racer/aws-deepracer-device-info-pkg) - provides hardware and software information.
-* [battery_node](https://github.com/aws-racer/i2c_pkg) - reads and publishes battery level information.
+* [network_monitor_node](https://github.com/aws-racer/aws-deepracer-systems-pkg) - responsible to connect to Wi-Fi based on configuration file on USB and communicate the network connection status.
+* [device_info_node](https://github.com/aws-racer/aws-deepracer-device-info-pkg) - provides hardware and software version information.
+* [battery_node](https://github.com/aws-racer/i2c_pkg) - reads and publishes vehicle battery level information.
 * [model_optimizer_node](https://github.com/aws-racer/aws-deepracer-model-optimizer-pkg) - runs the model optimizer on the selected machine learning model.
-* [status_led_node](https://github.com/aws-racer/aws-deepracer-status-led-pkg) - controls blinking and solid light functionality for the status LEDs. 
+* [status_led_node](https://github.com/aws-racer/aws-deepracer-status-led-pkg) - controls blinking and solid light functionality for the status LEDs found on the side of the DeepRacer device. 
 * [usb_monitor_node](https://github.com/aws-racer/aws-deepracer-usb-monitor-pkg) - monitors USB connections and published a notification if a required file is found. 
 * [web_video_server](https://github.com/RobotWebTools/web_video_server/pull/111) - an open source package that supports streaming the images from a topic through the webserver to the front end.
-* [webserver_node](https://github.com/aws-racer/aws-deepracer-webserver-pkg) - a collection of FLASK APIs called from the front end. These APIs call ROS services and return results to the front end.
+* [webserver_publisher_node](https://github.com/aws-racer/aws-deepracer-webserver-pkg) - a collection of FLASK APIs called from the front end. These APIs call ROS services and return results to the front end.
 
 ## Installing build tools
+
+To install the required build tools, open up a terminal on the DeepRacer device and run the following commands as root user.
+
 1. Install rosinstall if not installed previously:
 
         apt install python3-rosinstall
@@ -157,20 +159,20 @@ To launch the built packages on the DeepRacer device open up another terminal on
 
 ## Updating the deepracer-core service:
 
-To ensure the latest packages run when DeepRacer is started, update the existing packages from */opt/aws/deepracer/lib* folder with the new packages. Run the following commands to replace the existing installation with the newly built packages.
+To ensure the latest packages run when DeepRacer device is booted, update the existing packages from */opt/aws/deepracer/lib* folder with the new packages. Run the following commands to replace the existing installation with the newly built packages.
 
 
 1. Navigate to the deepracer workspace:
 
-    cd ~/deepracer_ws
+        cd ~/deepracer_ws
 
 1. Copy the newly built files to the */opt/aws/deepracer/lib* folder:
 
-    rsync -r ./ /opt/aws/deepracer/lib
+        cp -r ./ /opt/aws/deepracer/lib
 
 1. Restart the deepracer-core.service:
 
-    systemctl restart deepracer-core
+        systemctl restart deepracer-core
 
 Once you have the updated software installed on the device, you should be able to run the AWS DeepRacer core application and modify the existing nodes and packages to suit your needs.
 
