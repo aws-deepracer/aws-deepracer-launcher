@@ -1,0 +1,56 @@
+- git:
+    uri: https://github.com/aws-racer/aws-deepracer-camera-pkg.git
+    local-name: aws-deepracer-camera-pkg
+    version: main
+- git:
+    uri: https://github.com/aws-racer/aws-deepracer-ctrl-pkg.git
+    local-name: aws-deepracer-ctrl-pkg
+    version: main
+- git:
+    uri: https://github.com/aws-racer/aws-deepracer-device-info-pkg.git
+    local-name: aws-deepracer-device-info-pkg
+    version: main
+- git:
+    uri: https://github.com/aws-racer/aws-deepracer-i2c-pkg.git
+    local-name: aws-deepracer-i2c-pkg
+    version: main
+- git:
+    uri: https://github.com/aws-racer/aws-deepracer-inference-pkg.git
+    local-name: aws-deepracer-inference-pkg
+    version: main
+- git:
+    uri: https://github.com/aws-racer/aws-deepracer-interfaces-pkg.git
+    local-name: aws-deepracer-interfaces-pkg
+    version: main
+- git:
+    uri: https://github.com/aws-racer/aws-deepracer-model-optimizer-pkg.git
+    local-name: aws-deepracer-model-optimizer-pkg
+    version: main
+- git:
+    uri: https://github.com/aws-racer/aws-deepracer-navigation-pkg.git
+    local-name: aws-deepracer-navigation-pkg
+    version: main
+- git:
+    uri: https://github.com/aws-racer/aws-deepracer-sensor-fusion-pkg.git
+    local-name: aws-deepracer-sensor-fusion-pkg
+    version: main
+- git:
+    uri: https://github.com/aws-racer/aws-deepracer-servo-pkg.git
+    local-name: aws-deepracer-servo-pkg
+    version: main
+- git:
+    uri: https://github.com/aws-racer/aws-deepracer-status-led-pkg.git
+    local-name: aws-deepracer-status-led-pkg
+    version: main
+- git:
+    uri: https://github.com/aws-racer/aws-deepracer-systems-pkg.git
+    local-name: aws-deepracer-systems-pkg
+    version: main
+- git:
+    uri: https://github.com/aws-racer/aws-deepracer-usb-monitor-pkg.git
+    local-name: aws-deepracer-usb-monitor-pkg
+    version: main
+- git:
+    uri: https://github.com/aws-racer/aws-deepracer-webserver-pkg.git
+    local-name: aws-deepracer-webserver-pkg
+    version: main

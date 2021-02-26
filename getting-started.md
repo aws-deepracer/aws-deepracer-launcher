@@ -20,9 +20,6 @@ following software preinstalled:
 messages (**ros-foxy-sensor-msgs**) installed. For more informatiom about
 installing ROS2 Foxy, see [Installing ROS 2 via Debian Packages](https://index.ros.org/doc/ros2/Installation/Foxy/Linux-Install-Debians/).
 
-1. **Colcon:** We use colcon to build the AWS DeepRacer Core ROS2 packages. More 
-details to install and use colcon can be found here (https://index.ros.org/doc/ros2/Tutorials/Colcon-Tutorial/#colcon).
-
 1. **Intel OpenVino toolkit and its dependencies:** The AWS DeepRacer core application 
 uses Intel OpenVino to optimize the reinforcement learning models and run the inference 
 on them. As part of the preinstalled device software, we have installed the Intel 
@@ -80,6 +77,21 @@ The DeepRacer application includes packages for perception, decision, navigation
 * [web_video_server](https://github.com/RobotWebTools/web_video_server/pull/111) - an open source package that supports streaming the images from a topic through the webserver to the front end.
 * [webserver_node](https://github.com/aws-racer/aws-deepracer-webserver-pkg) - a collection of FLASK APIs called from the front end. These APIs call ROS services and return results to the front end.
 
+## Installing build tools
+1. Install rosinstall if not installed previously:
+
+        apt install python3-rosinstall
+
+1. Initializing rosdep if its not initialized previously:
+
+        rosdep init
+        rosdep update
+
+1. We use colcon to build the AWS DeepRacer Core ROS2 packages. More 
+details to install and use colcon can be found [here](https://index.ros.org/doc/ros2/Tutorials/Colcon-Tutorial/#colcon).
+
+        apt install colcon
+
 ## Building the core packages
 
 To build the core packages on the device, open up a terminal on the DeepRacer device and run the following commands as root user.
@@ -98,20 +110,25 @@ To build the core packages on the device, open up a terminal on the DeepRacer de
 
 1. Create a workspace directory for the package:
 
-        mkdir deepracer_ws
-        cd deepracer_ws
+        mkdir -p ~/deepracer_ws
+        cd ~/deepracer_ws
 
-1. Clone all the core AWS DeepRacer device packages on the DeepRacer device and update them to latest versions:
+1. Clone the deepracer_launcher package on the DeepRacer device:
 
-        TODO: Add rosws install command using .rosinstall
+        git clone https://github.com/aws-racer/aws-deepracer-launcher.git
+
+1. Fetch unreleased dependencies:
+
+        cd ~/deepracer_ws/aws-deepracer-launcher
+        rosws update
 
 1. Resolve the dependencies:
 
-        rosdep install -i --from-path . --rosdistro foxy -y
+        cd ~/deepracer_ws && rosdep install -i --from-path . --rosdistro foxy -y
 
-1. Build the core packages :
+1. Build the core packages:
 
-        colcon build
+        cd ~/deepracer_ws && colcon build
 
 ## Running the latest packages
 
@@ -119,7 +136,7 @@ To launch the built packages on the DeepRacer device open up another terminal on
 
 1. Navigate to the deepracer workspace:
 
-        cd deepracer_ws
+        cd ~/deepracer_ws
 
 1. Source the ROS2 Foxy setup bash script:
 
@@ -131,7 +148,7 @@ To launch the built packages on the DeepRacer device open up another terminal on
 
 1. Source the setup script for the installed packages:
 
-        source install/setup.bash 
+        source ~/deepracer_ws/install/setup.bash  
 
 1. Launch all the required nodes using the main launch script:
 
@@ -145,7 +162,7 @@ To ensure the latest packages run when DeepRacer is started, update the existing
 
 1. Navigate to the deepracer workspace:
 
-    cd deepracer_ws
+    cd ~/deepracer_ws
 
 1. Copy the newly built files to the */opt/aws/deepracer/lib* folder:
 
