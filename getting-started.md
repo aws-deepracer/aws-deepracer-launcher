@@ -90,7 +90,7 @@ The DeepRacer application includes packages for perception, decision, navigation
 1. We use colcon to build the AWS DeepRacer Core ROS2 packages. More 
 details to install and use colcon can be found [here](https://index.ros.org/doc/ros2/Tutorials/Colcon-Tutorial/#colcon).
 
-        apt install colcon
+        apt install python3-colcon-common-extensions -y
 
 ## Building the core packages
 
