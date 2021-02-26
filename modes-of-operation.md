@@ -85,9 +85,9 @@ In the continuous action values, we get a numerical mean value clipped between
 [-1.0, 1.0] which is rescaled linearly to the [minimum_value, maximum_value] for 
 speed and steering_angle. 
 
-At this point, both the speed and steering values are scaled based on their 
-maximum values. The rescaled speed value is further considered for non linearly 
-scaling to the range of [0.0, 1.0]. More details about this non linear scaling is 
+At this point, the steering value is scaled based on its 
+maximum value and the speed value is non linearly 
+scaled to the range of [0.0, 1.0]. More details about this non linear scaling is 
 explained in the "Non linear speed mapping equations” section below.
 
 ## Manual mode
@@ -146,7 +146,7 @@ The way it is implemented is by mapping the [maximum speed, half of the maximum
 speed] from the action space to the values of [1.0, 0.8] using the quadratic 
 equation: 
 
-> y = ax^2 + bx
+> y = ax\*\*2 + bx
 
 The equation corresponds to a parabola. In our use case, we have to find a parabola that will contain both the values [maximum_speed, 1.0] and [maximum_speed/2, 0.8] on it.  
 
@@ -186,7 +186,7 @@ We have already seen that the value of “c” in our expression is set to 0.
 
 Let us consider the equation of the parabola:
 
-> y = ax^2 + bx
+> y = ax\*\*2 + bx
 
 In our code, we notify the anchor values used for mapping as DEFAULT_SPEED_SCALES 
 = [1.0, 0.8]. With this notation we can find the value of coefficients “a” and 
@@ -195,29 +195,29 @@ DEFAULT_SPEED_SCALES[0]) and ([maximum_speed/2, DEFAULT_SPEED_SCALES[1])
 
 Replace the value of x and y in the parabola equation:
 
-> DEFAULT_SPEED_SCALES[0] = a * maximum_speed2 + b * maximum_speed
+> DEFAULT_SPEED_SCALES[0] = a * maximum_speed\*\*2 + b * maximum_speed
 
-> DEFAULT_SPEED_SCALES[1] = (a * maximum_speed2 ) / 4 + (b * maximum_speed) / 2
+> DEFAULT_SPEED_SCALES[1] = (a * maximum_speed\*\*2 ) / 4 + (b * maximum_speed) / 2
 
 Solving for “a” and “b”:
 
-> 4 * DEFAULT_SPEED_SCALES[1] = (a * maximum_speed2 ) + 2 * (b * maximum_speed)
+> 4 * DEFAULT_SPEED_SCALES[1] = (a * maximum_speed\*\*2 ) + 2 * (b * maximum_speed)
 
 > b = (1  / maximum_speed) * ( 4 * DEFAULT_SPEED_SCALES[1]  - DEFAULT_SPEED_SCALES[0])
 
-> b =* *(1  / maximum_speed) * 2.2
+> b = (1  / maximum_speed) * 2.2
 
 Replacing b in eq 3:
 
-> DEFAULT_SPEED_SCALES[1] = (a * maximum_speed2 ) / 4 + ( 4 * DEFAULT_SPEED_SCALES[1]  - DEFAULT_SPEED_SCALES[0] ) *  maximum_speed/ 2 * maximum_speed
+> DEFAULT_SPEED_SCALES[1] = (a * maximum_speed\*\*2 ) / 4 + ( 4 * DEFAULT_SPEED_SCALES[1]  - DEFAULT_SPEED_SCALES[0] ) *  maximum_speed/ (2 * maximum_speed)
 
-> 4 * DEFAULT_SPEED_SCALES[1] = (a * maximum_speed2 ) + 2 * ( 4 * DEFAULT_SPEED_SCALES[1]  - DEFAULT_SPEED_SCALES[0])
+> 4 * DEFAULT_SPEED_SCALES[1] = (a * maximum_speed\*\*2 ) + 2 * ( 4 * DEFAULT_SPEED_SCALES[1]  - DEFAULT_SPEED_SCALES[0])
 
-> a = (4 * DEFAULT_SPEED_SCALES[1] - 8 * DEFAULT_SPEED_SCALES[1] + 2 * DEFAULT_SPEED_SCALES[0] ) / maximum_speed2
+> a = (4 * DEFAULT_SPEED_SCALES[1] - 8 * DEFAULT_SPEED_SCALES[1] + 2 * DEFAULT_SPEED_SCALES[0] ) / maximum_speed\*\*2
 
-> a = (1 / maximum_speed2) * ( 2 * DEFAULT_SPEED_SCALES[0] - 4 * DEFAULT_SPEED_SCALES[1] )
+> a = (1 / maximum_speed\*\*2) * ( 2 * DEFAULT_SPEED_SCALES[0] - 4 * DEFAULT_SPEED_SCALES[1] )
 
-> a =  - (1 / maximum_speed2) * 1.2 
+> a =  - (1 / maximum_speed\*\*2) * 1.2 
 
 The coefficients “a” and “b” are inversely related to the maximum speed. And we can 
 confirm that increasing the maximum speed increases the width of the opening of 
@@ -241,24 +241,24 @@ This scaled speed value is mapped non linearly to a range of [0.0, 1.0] using th
 
 ### Autonomous mode: Impact of the Maximum Speed % value set by user in Device Console on the speed value
 
-The DeepRacer console allows the user to set the maximum speed % values between [0, 100]% with a default value set to 50%.  In the autonomous mode, this value that is set from the front end is passed back to the control_node where the non linearly scaled values are multiplied to this percentage. 
+The DeepRacer console allows the user to set the maximum speed % values between [0, 100]% with a default value set to 50%.  In the autonomous mode, this value that is set from the front end is passed back to the navigation node via control_node where the non linearly scaled values are multiplied to this percentage. 
 
-For example, if the user has set the maximum speed value to be 40%, and the model selected has a maximum speed of 0.8 m/s, then the raw_pwm output from the navigation node for a neural network output speed of 0.4 m/s is:
+For example, if the user has set the maximum speed value to be 40%, and the model selected has a maximum speed of 0.8 m/s, then the throttle value set in servo message in the navigation node for a neural network output speed of 0.4 m/s is:
 
-> non_linear_scaled_speed = (0.4m/s with maximum speed corresponds to 0.8 of non linear scaled speed)
+> non_linear_scaled_speed = 0.8 (0.4m/s corresponds to 0.8 of non linear scaled speed for a maximum speed of 0.8m/s )
 
-> raw_pwm = maximum_speed_threshold * non_linear_scaled_speed = 0.4 * 0.8 = 0.32
+> servo_msg.throttle = maximum_speed_threshold * non_linear_scaled_speed = 0.4 * 0.8 = 0.32
 
 If we consider for the same maximum speed threshold of 40% and maximum speed of 0.8m/s, if the neural network outputs a speed of 0.2 m/s, then the value of the non_linear_scaled_speed decreases according to the equation derived before:
 
 > coefficients = a, b = -1.875, 2.75 (for max speed 0.8 m/s) 
 > speed= 0.2 m/s
 
-> non_linear_scaled_speed = a * s**2 + b * s =  -1.875 * 0.2**2 + 2.75 * 0.2 
+> non_linear_scaled_speed = a * s\*\*2 + b * s =  -1.875 * 0.2\*\*2 + 2.75 * 0.2 
 >                         = 0.475 (0.2m/s corresponds to 0.475 for a maximum speed of 0.8 m/s)
 
-> raw_pwm = maximum_speed_threshold * non_linear_scaled_speed*
->         = 0.4 * 0.475 = 0.19
+> servo_msg.throttle = maximum_speed_threshold * non_linear_scaled_speed*
+>                    = 0.4 * 0.475 = 0.19
 
 ### Manual mode: Math behind the non linear speed mapping equations
 
@@ -267,11 +267,11 @@ map the raw value obtained from the joystick movement to the PWM values of the s
 and motor for the car to move.
 
 As we do not have a maximum speed value defined to calculate the coefficients of the 
-equation *y = ax^2 + bx* we use the maximum speed % from the device console to map to a 
+equation *y = ax\*\*2 + bx* we use the maximum speed % from the device console to map to a 
 range of [1.0, 5.0] speed scale values. This allows us to recalculate the curve for 
-each maximum speed % value and use that to map the speed values.
+each maximum speed % value and use that to map it to throttle value in servo message.
 
-The idea behind this mapping is a lower percentage of maximum speed % should map to a 
+The idea behind this is that a lower percentage of maximum speed % should map to a 
 higher speed scale value while calculating the coefficients so that the curve is more 
 flatter and the impact of actual speed values is less for lower max speed % as shown 
 below:
@@ -280,30 +280,33 @@ below:
 
 **Why do we need to map maximum speed percent values [0.0, 1.0] to another speed scale 
 value in range [5.0, 1.0] to calculate coefficients a and b?**
+
 The maximum_speed_percentage values that we get as an user input is in the range of [0.
-0, 1.0] and higher the values mean the user wants more out of the joystick movement. In 
+0, 1.0], and higher values mean the user wants more out of the joystick movement. In 
 other words, higher the values for these maximum_speed_percentage means that we need to 
 have a steep curve while mapping the possible speed values to their transformed 
-counterpart. So we need to inversely map the maximum speed percentage values to the 
-speed scale value used to calculate the *non_linear_scaled_speed.*
+counterpart(throttle value in servo message). So we need to inversely map the maximum speed percentage values to the 
+speed scale value used to calculate the *non_linear_scaled_speed*.
 
 We map the 100% maximum speed to 1.0 because the possible speed values from the 
 joystick range from [0.0, 1.0] and 1.0 is the minimum value where the curve peaks 
 before reversing in the figure seen above. This indicates that we will be guaranteed to 
 have a non linearly increasing mapping for all joystick values [0.0, 1.0].
 
-We map the 0% to 5.0, because that was used as a safe buffer to accommodate different 
-battery charge levels. For example, for a lower battery charge, the user might use a 
+We map the 0% to 5.0, to add a safe buffer to accommodate different 
+vehicle battery charge levels. For example, for a lower battery charge, the user might use a 
 maximum speed percentage of 70% to control the car, but when fully charged, he can 
 reduce the maximum_speed_percentage to 10% to have a similar effect.
 
 #### Example 1
 
 ```
-**input:** throttle (from the joystick) = 0.567; 
-max_speed_pct (from adjust maximum speed buttons) = 0.5
+input:
+throttle (from the joystick) = 0.567; 
+max_speed_pct (from +/- adjust maximum speed buttons) = 0.5
 
-**categorized_throttle = 0.5**
+calculated values:
+categorized_throttle = 0.5
 a =  -0.13333333333333336, b =  0.7333333333333334
 
 mapped_speed = a * categorized_throttle**2 + b * categorized_throttle
@@ -316,31 +319,37 @@ mapped_speed = a * categorized_throttle**2 + b * categorized_throttle
 #### Example 2
 
 ```
-**input:** throttle (from the joystick) = 0.567; 
-max_speed_pct (from adjust maximum speed buttons) = 0.6
-*categorized_throttle = 0.5*
+input:
+throttle (from the joystick) = 0.567; 
+max_speed_pct (from +/- adjust maximum speed buttons) = 0.6
 
+calculated values:
+categorized_throttle = 0.5
 a =  -0.17751479289940836, b =  0.8461538461538464
+
 mapped_speed = -0.17751479289940836 * 0.25 + 0.8461538461538464 * 0.5 = 0.378698225
 ```
 
 #### Example 3
 ```
-**input:** throttle (from the joystick) = 0.467; 
-max_speed_pct (from adjust maximum speed buttons) = 0.6
-**categorized_throttle = 0.3**
+input:
+throttle (from the joystick) = 0.467; 
+max_speed_pct (from +/- adjust maximum speed buttons) = 0.6
 
+calculated values:
+categorized_throttle = 0.3
 a =  -0.17751479289940836, b =  0.8461538461538464
-mapped_speed = -0.17751479289940836 * *0.09* + 0.8461538461538464 * *0.3* = 0.237869822
+
+mapped_speed = -0.17751479289940836 * 0.09 + 0.8461538461538464 * 0.3 = 0.237869822
 ```
 
 After we have the final categorizing and mapping completed for the speed and steering_angle, we have the output in the range of [-1.0, 1.0]. These values are passed to the servo node similar to the autonomous mode to move the car.
 
 ## Setting the servo and motor PWM duty values
 
-After we have the final scaling and mapping completed for the speed and steering_angle, we have the output in the range of [-1.0, 1.0]. Although for the autonomous mode, the speed will be in the range of [0.0, 1.0] as we do not support reverse driving for our car (yet). 
+The servo node expects the speed and steering_angle values sent as part of servo message in the range of [-1.0, 1.0]. Although for the autonomous mode, the speed will be in the range of [0.0, 1.0] as we do not support reverse driving for our car (yet). 
 
-The DeepRacer device is open loop system and do not have a feedback to recognize the speed of the car. We use an ad-hoc method to map the value of speed and steering_angle obtained at the servo node to the duty cycle values which regulates the RPM of the servo and motor. The exact value written as the PWM duty on to the motor/servo file further depends on the calibration values set during the calibration flow. 
+The DeepRacer device is open loop system and do not have a feedback to recognize the speed of the car. We use linearly map the value of speed and steering_angle obtained at the servo node to the duty cycle values which regulates the RPM of the servo and motor. The exact value written as the PWM duty on to the motor/servo file further depends on the bounding calibration values set during the calibration flow. 
 
 ## Summary
 
