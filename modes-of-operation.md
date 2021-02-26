@@ -150,7 +150,8 @@ equation:
 
 The equation corresponds to a parabola. In our use case, we have to find a parabola that will contain both the values [maximum_speed, 1.0] and [maximum_speed/2, 0.8] on it.  
 
-**Why do we need to fit [maximum_speed, 1.0] and [maximum_speed/2, 0.8] on the ax2 + bx curve?** 
+**Why do we need to fit [maximum_speed, 1.0] and [maximum_speed/2, 0.8] on the ax\*\*2 + bx curve?** 
+
 The value 1.0 and 0.8 correspond to the % of speed that needs 
 to be non-linearly mapped to maximum speed and the half of maximum speed values 
 that are passed as part of the model_metadata.json file(in autonomous mode). It 
@@ -166,7 +167,7 @@ To begin understanding this in detail, let us consider the the curves below:
 These show the mapping of different [maximum_speed, maximum_speed/2] values in 
 model_metadata to the [1.0, 0.8] value on the y axis. It is important to note that the 
 these values also pass through [0, 0] indicating that there is no constant value ‘c’ in 
-our parabola expression ax2 + bx + c.
+our parabola expression ax\*\*2 + bx + c.
 
 ### Building some intuition around the mapping curves:
 
