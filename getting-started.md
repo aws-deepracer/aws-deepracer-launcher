@@ -39,7 +39,20 @@ AVX support to work on the AWS DeepRacer device.
     4. **aws-deepracer-core** - This debian package installs all the ROS2 Foxy packages 
     required to provide the functionalities for AWS DeepRacer core application. 
 
-Before you pull the changes from the GitHub repositories, make sure you have the device setup completed and have the latest version of the AWS DeepRacer. For more information about the device setup and software update system, see [Getting Started](https://aws.amazon.com/deepracer/getting-started/) quick start guide for the AWS DeepRacer and AWS DeepRacer Evo devices.
+Before you pull the changes from the GitHub repositories, make sure you have the device setup completed and have the latest version of the AWS DeepRacer. For more information about the device setup, connecting to Wi-Fi and software update system, see [Getting Started](https://aws.amazon.com/deepracer/getting-started/) quick start guide for the AWS DeepRacer and AWS DeepRacer Evo devices.
+
+#### Installing the AWS DeepRacer debian packages using CLI:
+
+To install the latest AWS DeepRacer pacakges from the apt repository, open up a terminal on the DeepRacer device and run the following commands:
+
+1. Update the apt cache:
+        
+        sudo apt-get update
+
+1. Install the latest aws-deepracer-* packages:
+
+        sudo apt-get install aws-deepracer-*
+
 
 ## DeepRacer Core Components
 
