@@ -132,6 +132,10 @@ To build the core packages on the device, open up a terminal on the DeepRacer de
 
         git clone https://github.com/aws-racer/aws-deepracer-launcher.git
 
+1. Clone the async_web_server_cpp, web_video_server and rplidar_ros dependency packages on the DeepRacer device:
+
+        cd ~/deepracer_ws/aws-deepracer-launcher && ./install_dependencies.sh
+
 1. Fetch unreleased dependencies:
 
         cd ~/deepracer_ws/aws-deepracer-launcher
@@ -139,19 +143,15 @@ To build the core packages on the device, open up a terminal on the DeepRacer de
 
 1. Resolve the dependencies:
 
-        cd ~/deepracer_ws && rosdep install -i --from-path . --rosdistro foxy -y
+        cd ~/deepracer_ws/aws-deepracer-launcher && rosdep install -i --from-path . --rosdistro foxy -y
 
 1. Build the core packages:
 
-        cd ~/deepracer_ws && colcon build
+        cd ~/deepracer_ws/aws-deepracer-launcher && colcon build
 
 ## Running the latest packages
 
 To launch the built packages on the DeepRacer device open up another terminal on the DeepRacer device and run the following commands as root user:
-
-1. Navigate to the deepracer workspace:
-
-        cd ~/deepracer_ws
 
 1. Source the ROS2 Foxy setup bash script:
 
@@ -163,7 +163,7 @@ To launch the built packages on the DeepRacer device open up another terminal on
 
 1. Source the setup script for the installed packages:
 
-        source ~/deepracer_ws/install/setup.bash  
+        source ~/deepracer_ws/aws-deepracer-launcher/install/setup.bash  
 
 1. Launch all the required nodes using the main launch script:
 
