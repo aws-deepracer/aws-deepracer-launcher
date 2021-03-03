@@ -177,7 +177,7 @@ To ensure the latest packages run when DeepRacer device is booted, update the ex
 
 1. Navigate to the deepracer workspace:
 
-        cd ~/deepracer_ws
+        cd ~/deepracer_ws/aws-deepracer-launcher/install
 
 1. Copy the newly built files to the */opt/aws/deepracer/lib* folder:
 
