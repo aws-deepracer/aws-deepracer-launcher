@@ -5,7 +5,7 @@ changing core packages or building new packages. This will make it easier to dev
 debug, and test the application.
 
 If your device is not upgraded to the latest software stack with Ubuntu 20.04 and ROS2 
-Foxy, you can follow the instructions [here](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-vehicle-factory-reset-instructions.html) to flash the device with upgraded software 
+Foxy, you can follow the instructions [here](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-ubuntu-update.html) to flash the device with upgraded software 
 stack. After flashing the device with the new image, the software stack should be 
 updated to **Ubuntu 20.04 Focal Fossa**, **Intel® OpenVINO™ toolkit 2021.1.110**, 
 **ROS2 Foxy Fitzroy** and **Python 3.8**.
