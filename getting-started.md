@@ -190,4 +190,11 @@ To ensure the latest packages run when DeepRacer device is booted, update the ex
 Once you have the updated software installed on the device, you should be able to run the AWS DeepRacer core application and modify the existing nodes and packages to suit your needs.
 
 For more information about how the core application works in different
-modes, see [Modes of Operation](modes-of-operation.md).
+modes, see [Modes of Operation](https://github.com/awsdeepracer/aws-deepracer-launcher/blob/main/modes-of-operation.md).
+
+## Resources
+
+* Upgrade to latest software stack with Ubuntu 20.04 and ROS2 
+Foxy [https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-ubuntu-update.html](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-ubuntu-update.html)
+* AWS DeepRacer quickstart guide: [https://aws.amazon.com/deepracer/getting-started/](https://aws.amazon.com/deepracer/getting-started/)
+* AWS DeepRacer device modes of operation: [https://github.com/awsdeepracer/aws-deepracer-launcher/blob/main/modes-of-operation.md](https://github.com/awsdeepracer/aws-deepracer-launcher/blob/main/modes-of-operation.md)
