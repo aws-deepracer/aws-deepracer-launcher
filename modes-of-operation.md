@@ -354,9 +354,9 @@ The DeepRacer device is open loop system and do not have a feedback to recognize
 
 ## Summary
 
-This component is one of the core features of the AWS DeepRacer application. The [Follow Me](https://github.com/awsdeepracer/aws-deepracer-follow-me-sample-project) sample project developed, leverages most of the concepts used in the manual mode to build the **follow_me_navigation** node. You can learn more about the Follow Me sample project [here](https://github.com/awsdeepracer/aws-deepracer-follow-me-sample-project).
+This component is one of the core features of the AWS DeepRacer application. The [Follow the Leader(FTL)](https://github.com/awsdeepracer/aws-deepracer-follow-the-leader-sample-project) sample project developed, leverages most of the concepts used in the manual mode to build the **ftl_navigation** node. You can learn more about the Follow the Leader(FTL) sample project [here](https://github.com/awsdeepracer/aws-deepracer-follow-the-leader-sample-project).
 
 ## Resources
 
 * AWS DeepRacer Opensource getting started: [https://github.com/awsdeepracer/aws-deepracer-launcher/blob/main/getting-started.md](https://github.com/awsdeepracer/aws-deepracer-launcher/blob/main/getting-started.md)
-* Follow Me sample project getting started: [https://github.com/awsdeepracer/aws-deepracer-follow-me-sample-project/blob/main/getting-started.md](https://github.com/awsdeepracer/aws-deepracer-follow-me-sample-project/blob/main/getting-started.md)
+* Follow the Leader(FTL) sample project getting started: [https://github.com/awsdeepracer/aws-deepracer-follow-the-leader-sample-project/blob/main/getting-started.md](https://github.com/awsdeepracer/aws-deepracer-follow-me-sample-project/blob/main/getting-started.md)
