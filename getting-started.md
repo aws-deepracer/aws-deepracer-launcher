@@ -93,6 +93,10 @@ The DeepRacer application includes packages for perception, decision, navigation
 
 To install the required build tools, open up a terminal on the DeepRacer device and run the following commands as root user.
 
+1. Switch to root user before installing and initializing rosinstall:
+
+        sudo su
+
 1. Install rosinstall if not installed previously:
 
         apt install python3-rosinstall
@@ -110,6 +114,10 @@ details to install and use colcon can be found [here](https://index.ros.org/doc/
 ## Building the core packages
 
 To build the core packages on the device, open up a terminal on the DeepRacer device and run the following commands as root user.
+
+1. Switch to root user:
+
+        sudo su
 
 1. Stop the deepracer-core.service that is currently running on the device:
 
@@ -153,6 +161,10 @@ To build the core packages on the device, open up a terminal on the DeepRacer de
 
 To launch the built packages on the DeepRacer device open up another terminal on the DeepRacer device and run the following commands as root user:
 
+1. Switch to root user before you source the ROS2 installation:
+
+        sudo su
+
 1. Source the ROS2 Foxy setup bash script:
 
         source /opt/ros/foxy/setup.bash 
@@ -174,6 +186,9 @@ To launch the built packages on the DeepRacer device open up another terminal on
 
 To ensure the latest packages run when DeepRacer device is booted, update the existing packages from */opt/aws/deepracer/lib* folder with the new packages. Run the following commands to replace the existing installation with the newly built packages.
 
+1. Switch to root user:
+
+        sudo su
 
 1. Navigate to the deepracer workspace:
 
