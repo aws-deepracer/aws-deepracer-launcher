@@ -89,6 +89,11 @@ The DeepRacer application includes packages for perception, decision, navigation
 * [web_video_server](https://github.com/RobotWebTools/web_video_server/pull/111) - an open source package that supports streaming the images from a topic through the webserver to the front end.
 * [webserver_publisher_node](https://github.com/awsdeepracer/aws-deepracer-webserver-pkg) - a collection of FLASK APIs called from the front end. These APIs call ROS services and return results to the front end.
 
+
+## (Optional) Enabling SSH on the DeepRacer device:
+
+The DeepRacer device console provides interface to enable the SSH server on the DeepRacer device. After enabling the SSH on the device it is possible to login via CLI from your local system and execute commands. More instructions about the Settings page can be found [here](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-manage-vehicle-settings.html).
+
 ## Installing build tools
 
 To install the required build tools, open up a terminal on the DeepRacer device and run the following commands as root user.
