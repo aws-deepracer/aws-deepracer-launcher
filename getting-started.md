@@ -92,7 +92,12 @@ The DeepRacer application includes packages for perception, decision, navigation
 
 ### (Optional) Enabling SSH on the DeepRacer device:
 
-The DeepRacer device console provides interface to enable the SSH server on the DeepRacer device. After enabling the SSH on the device it is possible to login via CLI from your local system and execute commands. More instructions about the Settings page can be found [here](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-manage-vehicle-settings.html).
+1. The DeepRacer device console provides interface to enable the SSH server on the DeepRacer device. After enabling the SSH on the device it is possible to login via CLI from your local system and execute commands. More instructions about the Settings page can be found [here](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-manage-vehicle-settings.html).
+
+1. After enabling the SSH server, SSH into the DeepRacer device(The local system should be on the same Wi-Fi as the DeepRacer device):
+
+        ssh deepracer@<<IP_ADDRESS>>
+
 
 ## Installing build tools
 
