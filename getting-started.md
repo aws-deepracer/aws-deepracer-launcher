@@ -212,17 +212,13 @@ modes, see [Modes of Operation](https://github.com/awsdeepracer/aws-deepracer-la
 
 To start and stop the deepracer-core service for development/debugging, you can run the following commands.
 
-1. Switch to root user:
+1. To stop the deepracer-core.service:
 
-        sudo su
+        sudo systemctl stop deepracer-core
 
-1. Stop the deepracer-core.service:
+1. To restart the deepracer-core.service:
 
-        systemctl stop deepracer-core
-
-1. Start the deepracer-core.service:
-
-        systemctl start deepracer-core
+        sudo systemctl restart deepracer-core
 
 ## Resources
 
