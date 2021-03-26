@@ -90,7 +90,7 @@ The DeepRacer application includes packages for perception, decision, navigation
 * [webserver_publisher_node](https://github.com/awsdeepracer/aws-deepracer-webserver-pkg) - a collection of FLASK APIs called from the front end. These APIs call ROS services and return results to the front end.
 
 
-## (Optional) Enabling SSH on the DeepRacer device:
+### (Optional) Enabling SSH on the DeepRacer device:
 
 The DeepRacer device console provides interface to enable the SSH server on the DeepRacer device. After enabling the SSH on the device it is possible to login via CLI from your local system and execute commands. More instructions about the Settings page can be found [here](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-manage-vehicle-settings.html).
 
