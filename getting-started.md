@@ -207,6 +207,23 @@ Once you have the updated software installed on the device, you should be able t
 For more information about how the core application works in different
 modes, see [Modes of Operation](https://github.com/awsdeepracer/aws-deepracer-launcher/blob/main/modes-of-operation.md).
 
+
+## Start/Stop the deepracer-core service:
+
+To start and stop the deepracer-core service for development/debugging, you can run the following commands.
+
+1. Switch to root user:
+
+        sudo su
+
+1. Stop the deepracer-core.service:
+
+        systemctl stop deepracer-core
+
+1. Start the deepracer-core.service:
+
+        systemctl start deepracer-core
+
 ## Resources
 
 * Upgrade to latest software stack with Ubuntu 20.04 and ROS2 
