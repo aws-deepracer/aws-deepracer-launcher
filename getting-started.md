@@ -60,34 +60,34 @@ The DeepRacer application includes packages for perception, decision, navigation
 
 **Perception**
 
-* [camera_node](https://github.com/awsdeepracer/aws-deepracer-camera-pkg) - reads and publishes data from the camera. 
+* [camera_node](https://github.com/aws-deepracer/aws-deepracer-camera-pkg) - reads and publishes data from the camera. 
 * [rplidar_node](https://github.com/youngday/rplidar_ros2) - an open source package that supports reading and publishing LiDAR data from the connected RPLidar device.
-* [sensor_fusion_node](https://github.com/awsdeepracer/aws-deepracer-sensor-fusion-pkg) - combines and publishes camera and LiDAR data (if one is present) as a single message.
+* [sensor_fusion_node](https://github.com/aws-deepracer/aws-deepracer-sensor-fusion-pkg) - combines and publishes camera and LiDAR data (if one is present) as a single message.
 
 **Decision**
 
-* [inference_node](https://github.com/awsdeepracer/aws-deepracer-inference-pkg) - runs inference on the selected machine learning model.
+* [inference_node](https://github.com/aws-deepracer/aws-deepracer-inference-pkg) - runs inference on the selected machine learning model.
 
 **Navigation**
 
-* [deepracer_navigation_node](https://github.com/awsdeepracer/aws-deepracer-navigation-pkg) - collects model inference results and publishes a servo message with throttle and steering angle values based on the action space for the selected machine learning model.
-* [servo_node](https://github.com/awsdeepracer/aws-deepracer-servo-pkg) - maps the input servo throttle and servo angle ratios to raw PWM values thats set on the servo/motor to move the vehicle.
+* [deepracer_navigation_node](https://github.com/aws-deepracer/aws-deepracer-navigation-pkg) - collects model inference results and publishes a servo message with throttle and steering angle values based on the action space for the selected machine learning model.
+* [servo_node](https://github.com/aws-deepracer/aws-deepracer-servo-pkg) - maps the input servo throttle and servo angle ratios to raw PWM values thats set on the servo/motor to move the vehicle.
 
 **General Application Support**
 
 * [async_web_server_cpp](https://github.com/GT-RAIL/async_web_server_cpp) - an open source package that supports streaming display_mjpeg and overlay_mjpeg to the front end as a camera stream.
-* [ctrl_node](https://github.com/awsdeepracer/aws-deepracer-ctrl-pkg) - as the main node, it exposes services used by webserver backend API calls.
-* [software_update_node](https://github.com/awsdeepracer/aws-deepracer-systems-pkg) - responsible for the software update system managing the aws-deepracer-core, aws-deepracer-util, aws-deepracer-sample-models, and aws-deepracer-webserver packages.
-* [model_loader_node](https://github.com/awsdeepracer/aws-deepracer-systems-pkg) - responsible for extracting tar.gz model files from USB and those uploaded from console.
-* [otg_control_node](https://github.com/awsdeepracer/aws-deepracer-systems-pkg) - responsible to enable and disable OTG connection and publish connection status.
-* [network_monitor_node](https://github.com/awsdeepracer/aws-deepracer-systems-pkg) - responsible to connect to Wi-Fi based on configuration file on USB and communicate the network connection status.
-* [device_info_node](https://github.com/awsdeepracer/aws-deepracer-device-info-pkg) - provides hardware and software version information.
-* [battery_node](https://github.com/awsdeepracer/i2c_pkg) - reads and publishes vehicle battery level information.
-* [model_optimizer_node](https://github.com/awsdeepracer/aws-deepracer-model-optimizer-pkg) - runs the model optimizer on the selected machine learning model.
-* [status_led_node](https://github.com/awsdeepracer/aws-deepracer-status-led-pkg) - controls blinking and solid light functionality for the status LEDs found on the side of the DeepRacer device. 
-* [usb_monitor_node](https://github.com/awsdeepracer/aws-deepracer-usb-monitor-pkg) - monitors USB connections and published a notification if a required file is found. 
+* [ctrl_node](https://github.com/aws-deepracer/aws-deepracer-ctrl-pkg) - as the main node, it exposes services used by webserver backend API calls.
+* [software_update_node](https://github.com/aws-deepracer/aws-deepracer-systems-pkg) - responsible for the software update system managing the aws-deepracer-core, aws-deepracer-util, aws-deepracer-sample-models, and aws-deepracer-webserver packages.
+* [model_loader_node](https://github.com/aws-deepracer/aws-deepracer-systems-pkg) - responsible for extracting tar.gz model files from USB and those uploaded from console.
+* [otg_control_node](https://github.com/aws-deepracer/aws-deepracer-systems-pkg) - responsible to enable and disable OTG connection and publish connection status.
+* [network_monitor_node](https://github.com/aws-deepracer/aws-deepracer-systems-pkg) - responsible to connect to Wi-Fi based on configuration file on USB and communicate the network connection status.
+* [device_info_node](https://github.com/aws-deepracer/aws-deepracer-device-info-pkg) - provides hardware and software version information.
+* [battery_node](https://github.com/aws-deepracer/i2c_pkg) - reads and publishes vehicle battery level information.
+* [model_optimizer_node](https://github.com/aws-deepracer/aws-deepracer-model-optimizer-pkg) - runs the model optimizer on the selected machine learning model.
+* [status_led_node](https://github.com/aws-deepracer/aws-deepracer-status-led-pkg) - controls blinking and solid light functionality for the status LEDs found on the side of the DeepRacer device. 
+* [usb_monitor_node](https://github.com/aws-deepracer/aws-deepracer-usb-monitor-pkg) - monitors USB connections and published a notification if a required file is found. 
 * [web_video_server](https://github.com/RobotWebTools/web_video_server/pull/111) - an open source package that supports streaming the images from a topic through the webserver to the front end.
-* [webserver_publisher_node](https://github.com/awsdeepracer/aws-deepracer-webserver-pkg) - a collection of FLASK APIs called from the front end. These APIs call ROS services and return results to the front end.
+* [webserver_publisher_node](https://github.com/aws-deepracer/aws-deepracer-webserver-pkg) - a collection of FLASK APIs called from the front end. These APIs call ROS services and return results to the front end.
 
 
 ## (Optional) Use SSH to remotely connect to the DeepRacer device:
@@ -148,7 +148,7 @@ To build the core packages on the device, open up a terminal on the DeepRacer de
 
 1. Clone the deepracer_launcher package on the DeepRacer device:
 
-        git clone https://github.com/awsdeepracer/aws-deepracer-launcher.git
+        git clone https://github.com/aws-deepracer/aws-deepracer-launcher.git
 
 1. Clone the async_web_server_cpp, web_video_server and rplidar_ros dependency packages on the DeepRacer device:
 
@@ -215,7 +215,7 @@ To ensure the latest packages run when DeepRacer device is booted, update the ex
 Once you have the updated software installed on the device, you should be able to run the AWS DeepRacer core application and modify the existing nodes and packages to suit your needs.
 
 For more information about how the core application works in different
-modes, see [Modes of Operation](https://github.com/awsdeepracer/aws-deepracer-launcher/blob/main/modes-of-operation.md).
+modes, see [Modes of Operation](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/modes-of-operation.md).
 
 
 ## Start/Stop the deepracer-core service:
@@ -235,4 +235,4 @@ To start and stop the deepracer-core service for development/debugging, you can 
 * Upgrade to latest software stack with Ubuntu 20.04 and ROS2 
 Foxy [https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-ubuntu-update.html](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-ubuntu-update.html)
 * AWS DeepRacer quickstart guide: [https://aws.amazon.com/deepracer/getting-started/](https://aws.amazon.com/deepracer/getting-started/)
-* AWS DeepRacer device modes of operation: [https://github.com/awsdeepracer/aws-deepracer-launcher/blob/main/modes-of-operation.md](https://github.com/awsdeepracer/aws-deepracer-launcher/blob/main/modes-of-operation.md)
+* AWS DeepRacer device modes of operation: [https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/modes-of-operation.md](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/modes-of-operation.md)

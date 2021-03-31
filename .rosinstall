@@ -1,56 +1,56 @@
 - git:
-    uri: https://github.com/awsdeepracer/aws-deepracer-camera-pkg.git
+    uri: https://github.com/aws-deepracer/aws-deepracer-camera-pkg.git
     local-name: aws-deepracer-camera-pkg
     version: main
 - git:
-    uri: https://github.com/awsdeepracer/aws-deepracer-ctrl-pkg.git
+    uri: https://github.com/aws-deepracer/aws-deepracer-ctrl-pkg.git
     local-name: aws-deepracer-ctrl-pkg
     version: main
 - git:
-    uri: https://github.com/awsdeepracer/aws-deepracer-device-info-pkg.git
+    uri: https://github.com/aws-deepracer/aws-deepracer-device-info-pkg.git
     local-name: aws-deepracer-device-info-pkg
     version: main
 - git:
-    uri: https://github.com/awsdeepracer/aws-deepracer-i2c-pkg.git
+    uri: https://github.com/aws-deepracer/aws-deepracer-i2c-pkg.git
     local-name: aws-deepracer-i2c-pkg
     version: main
 - git:
-    uri: https://github.com/awsdeepracer/aws-deepracer-inference-pkg.git
+    uri: https://github.com/aws-deepracer/aws-deepracer-inference-pkg.git
     local-name: aws-deepracer-inference-pkg
     version: main
 - git:
-    uri: https://github.com/awsdeepracer/aws-deepracer-interfaces-pkg.git
+    uri: https://github.com/aws-deepracer/aws-deepracer-interfaces-pkg.git
     local-name: aws-deepracer-interfaces-pkg
     version: main
 - git:
-    uri: https://github.com/awsdeepracer/aws-deepracer-model-optimizer-pkg.git
+    uri: https://github.com/aws-deepracer/aws-deepracer-model-optimizer-pkg.git
     local-name: aws-deepracer-model-optimizer-pkg
     version: main
 - git:
-    uri: https://github.com/awsdeepracer/aws-deepracer-navigation-pkg.git
+    uri: https://github.com/aws-deepracer/aws-deepracer-navigation-pkg.git
     local-name: aws-deepracer-navigation-pkg
     version: main
 - git:
-    uri: https://github.com/awsdeepracer/aws-deepracer-sensor-fusion-pkg.git
+    uri: https://github.com/aws-deepracer/aws-deepracer-sensor-fusion-pkg.git
     local-name: aws-deepracer-sensor-fusion-pkg
     version: main
 - git:
-    uri: https://github.com/awsdeepracer/aws-deepracer-servo-pkg.git
+    uri: https://github.com/aws-deepracer/aws-deepracer-servo-pkg.git
     local-name: aws-deepracer-servo-pkg
     version: main
 - git:
-    uri: https://github.com/awsdeepracer/aws-deepracer-status-led-pkg.git
+    uri: https://github.com/aws-deepracer/aws-deepracer-status-led-pkg.git
     local-name: aws-deepracer-status-led-pkg
     version: main
 - git:
-    uri: https://github.com/awsdeepracer/aws-deepracer-systems-pkg.git
+    uri: https://github.com/aws-deepracer/aws-deepracer-systems-pkg.git
     local-name: aws-deepracer-systems-pkg
     version: main
 - git:
-    uri: https://github.com/awsdeepracer/aws-deepracer-usb-monitor-pkg.git
+    uri: https://github.com/aws-deepracer/aws-deepracer-usb-monitor-pkg.git
     local-name: aws-deepracer-usb-monitor-pkg
     version: main
 - git:
-    uri: https://github.com/awsdeepracer/aws-deepracer-webserver-pkg.git
+    uri: https://github.com/aws-deepracer/aws-deepracer-webserver-pkg.git
     local-name: aws-deepracer-webserver-pkg
     version: main
