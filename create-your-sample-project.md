@@ -8,15 +8,15 @@ This document can be used as a quick on-boarding tutorial with high level instru
 * Design your application to use various existing ROS packages and nodes built by the open source ROS community or develop your own ROS nodes.
 * Build and test the nodes individually and then as an end to end application to verify the functionality.  
 
-#### Instructions to use ROS2 CLI
+### Instructions to use ROS2 CLI
 
 * Understanding ROS2 CLI: https://docs.ros.org/en/foxy/Concepts/About-Command-Line-Tools.html
 * Cheat Sheet
     https://github.com/ubuntu-robotics/ros2_cheats_sheet/blob/master/cli/cli_cheats_sheet.pdf
 
-### Steps to create your own sample project
+## Steps to create your own sample project
 
-#### Create a package and ROS nodes:
+### Create a package and ROS nodes:
 
 As a first step in creating your ROS application, you will have to create a ROS workspace, ROS package(s) in the workspace and start adding ROS nodes to the packages. If you wish to use/modify a certain DeepRacer core package node, you can do so by directly adding those nodes in your workspace so that you can build them with your sample project. The [AWS DeepRacer Follow the Leader(FTL)](https://github.com/aws-deepracer/aws-deepracer-follow-the-leader-sample-project) sample project is an example where the application uses some packages as is from the core application, modifies some of the packages and adds new packages as part of the implementation.
 
@@ -29,15 +29,15 @@ ROS uses packages to organize its programs. You can think of a package as all th
 |_ package.xml: Package information and dependencies
 ```
 
-#### Edit the ROS node:
+### Edit the ROS node:
 
 You can now edit the ROS node that is created to add the functionality you desire for the specific ROS node. While developing on the ROS node, try to follow the structure of existing ROS nodes, so the packages you develop are consistent with the existing ROS nodes. Also make sure to add [logging](https://docs.ros.org/en/foxy/Concepts/About-Logging.html) at appropriate places so that its easier to debug at a later stage.
 
-#### Build nodes:
+### Build nodes:
 
 ROS uses [colcon](https://colcon.readthedocs.io/en/released/user/how-to.html) as a build system to build the nodes and packages that are created. More information about using the colcon commands to build ROS packages can be found [here](https://docs.ros.org/en/foxy/Tutorials/Colcon-Tutorial.html). The instructions on AWS DeepRacer GitHub pages should also provide examples to use colcon to build the ROS nodes. 
 
-#### Run the sample project:
+### Run the sample project:
 
 All the nodes that are created as part of the sample project can be launched simultaneously using a ROS launcher. More information about launching and monitoring multiple nodes using ROS launcher can be found [here](https://docs.ros.org/en/foxy/Tutorials/Launch-system.html). After building all the required nodes for the sample project in your workspace, open up a fresh terminal and run the launch script you created. 
 
@@ -45,7 +45,7 @@ Depending on how your sample project will be leveraging the existing AWS DeepRac
 
 An example on launching a sample project can be found in the GitHub instructions for the [AWS DeepRacer Follow the Leader(FTL)](https://github.com/aws-deepracer/aws-deepracer-follow-the-leader-sample-project/tree/main/deepracer_follow_the_leader_ws/ftl_launcher) sample project.
 
-#### Test:
+### Test:
 
 This is an important step, where first you will have to make sure the ROS nodes you developed and/or customized for your use case are working as expected and also ensure the pipeline of ROS topics/services works as an end to end application. In many cases ROS Topics and ROS Service calls are used for the inter-node communication. We recommend testing each and every ROS Node which you have modified/developed by checking the inputs and outputs of the ROS topics and services implemented in those nodes.
 
@@ -65,7 +65,7 @@ This is an important step, where first you will have to make sure the ROS nodes 
 ROS also provides ROS CLI commands to test messages and services ([subscribe](https://docs.ros.org/en/foxy/Tutorials/Topics/Understanding-ROS2-Topics.html#ros2-topic-echo) to the ROS Topics (if any) or trigger the [services](https://docs.ros.org/en/foxy/Tutorials/Services/Understanding-ROS2-Services.html#ros2-service-call) (if any) using CLI). Once you have confidence on the individual nodes, you can check if the pipeline of the nodes you created work as expected end to end by launching all the nodes.
 
 
-### Create an example sample project:
+## Create an example sample project:
 
 As an example, here are the step by step instructions to create your first sample project. This sample project will have a basic functionality to blink the tail light with red-blue siren effect for 5 seconds at the start of the application.
 
@@ -315,7 +315,7 @@ As an example, here are the step by step instructions to create your first sampl
 
 You can refer **[aws-deepracer-follow-the-leader-sample-project](https://github.com/awsdeepracer/aws-deepracer-follow-the-leader-sample-project)** to understand how to create, build and run your own sample project. We recommend you clone the required packages and create a new repository combining all the different ROS nodes like we have for [Follow the Leader(FTL)](https://github.com/awsdeepracer/aws-deepracer-follow-the-leader-sample-project) repository.
 
-#### Troubleshooting and debugging guidelines
+### Troubleshooting and debugging guidelines
 
 * **What if your vehicle isn’t operating/moving the way you want it to?**
     Follow the [instructions](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-calibrate-vehicle.html) to calibrate the mechanics of your AWS DeepRacer Vehicle. This should be done so that the vehicle performance is optimal and it behaves as expected. 
@@ -323,7 +323,7 @@ You can refer **[aws-deepracer-follow-the-leader-sample-project](https://github.
     All the logs for the ROS nodes that are running by default are streamed to /var/log/syslog file. But if you ran your nodes directly on the CLI, then the logs are streamed to the stdout on the terminal. You can understand more about logging and logger configuration [here](https://docs.ros.org/en/foxy/Concepts/About-Logging.html).
 
 
-#### FAQ
+### FAQ
 
 * **How do I use SSH to connect remotely to the DeepRacer device?**
     * The Settings page in the DeepRacer device console provides interface to enable the SSH server on the DeepRacer device. After enabling the SSH on the device it is possible to remotely login to DeepRacer via CLI from your local system and execute commands. More instructions about the Settings page can be found [here](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-manage-vehicle-settings.html).
@@ -340,6 +340,3 @@ You can refer **[aws-deepracer-follow-the-leader-sample-project](https://github.
     The steering and speed motors are powered by the  vehicle (blue/black) battery. You have to keep it turned on if you need to  test the steering or throttle changes.
 * **Do I need to run `colcon build` after every  configuration change? If so can I specify a single node for rebuilding?**
     Yes, you need to run colcon build after every  change. The build times are shorter if there are no major changes.  There are also ways you can build the packages that are modified and retain the others to reduce build time (--symlink-install). More info: https://colcon.readthedocs.io/en/released/user/how-to.html and https://docs.ros.org/en/foxy/Tutorials/Workspace/Creating-A-Workspace.html#build-the-workspace-with-colcon.
-
-
-
