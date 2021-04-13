@@ -318,25 +318,33 @@ You can refer **[aws-deepracer-follow-the-leader-sample-project](https://github.
 ## Troubleshooting and debugging guidelines
 
 * **What if your vehicle isn’t operating/moving the way you want it to?**
+
     Follow the [instructions](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-calibrate-vehicle.html) to calibrate the mechanics of your AWS DeepRacer Vehicle. This should be done so that the vehicle performance is optimal and it behaves as expected. 
 * **Is there a runtime log? How can I configure the ROS2 logger to help in debugging?**
+
     All the logs for the ROS nodes that are running by default are streamed to /var/log/syslog file. But if you ran your nodes directly on the CLI, then the logs are streamed to the stdout on the terminal. You can understand more about logging and logger configuration [here](https://docs.ros.org/en/foxy/Concepts/About-Logging.html).
 
 
 ## FAQ
 
 * **How do I use SSH to connect remotely to the DeepRacer device?**
+
     * The Settings page in the DeepRacer device console provides interface to enable the SSH server on the DeepRacer device. After enabling the SSH on the device it is possible to remotely login to DeepRacer via CLI from your local system and execute commands. More instructions about the Settings page can be found [here](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-manage-vehicle-settings.html).
     * After enabling the SSH server, remotely connect to the DeepRacer (The local system should be on the same Wi-Fi as the DeepRacer device):
     
             ssh deepracer@<<IP_ADDRESS>>
     
 * **How do I disable a node from the default core service?**
+
     Commenting the add action in the DeepRacer launcher [launch file](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/deepracer_launcher/launch/deepracer_launcher.py) should allow you to disable/stop creating a node. 
     * [Stop](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/getting-started.md#startstop-the-deepracer-core-service) the core service
     * Comment the add action line in the launcher file located at the `/opt/aws/deepracer/lib/deepracer_launcher/launch/deepracer_launcher.py` location.
     * [Restart](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/getting-started.md#startstop-the-deepracer-core-service) the core service
+
 * **How can I power up the steering servo channel?** 
+
     The steering and speed motors are powered by the  vehicle (blue/black) battery. You have to keep it turned on if you need to  test the steering or throttle changes.
+
 * **Do I need to run `colcon build` after every  configuration change? If so can I specify a single node for rebuilding?**
+
     Yes, you need to run colcon build after every  change. The build times are shorter if there are no major changes.  There are also ways you can build the packages that are modified and retain the others to reduce build time (--symlink-install). More info: https://colcon.readthedocs.io/en/released/user/how-to.html and https://docs.ros.org/en/foxy/Tutorials/Workspace/Creating-A-Workspace.html#build-the-workspace-with-colcon.
