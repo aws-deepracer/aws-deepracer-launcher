@@ -315,7 +315,7 @@ As an example, here are the step by step instructions to create your first sampl
 
 You can refer **[aws-deepracer-follow-the-leader-sample-project](https://github.com/awsdeepracer/aws-deepracer-follow-the-leader-sample-project)** to understand how to create, build and run your own sample project. We recommend you clone the required packages and create a new repository combining all the different ROS nodes like we have for [Follow the Leader(FTL)](https://github.com/awsdeepracer/aws-deepracer-follow-the-leader-sample-project) repository.
 
-### Troubleshooting and debugging guidelines
+## Troubleshooting and debugging guidelines
 
 * **What if your vehicle isn’t operating/moving the way you want it to?**
     Follow the [instructions](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-calibrate-vehicle.html) to calibrate the mechanics of your AWS DeepRacer Vehicle. This should be done so that the vehicle performance is optimal and it behaves as expected. 
@@ -323,7 +323,7 @@ You can refer **[aws-deepracer-follow-the-leader-sample-project](https://github.
     All the logs for the ROS nodes that are running by default are streamed to /var/log/syslog file. But if you ran your nodes directly on the CLI, then the logs are streamed to the stdout on the terminal. You can understand more about logging and logger configuration [here](https://docs.ros.org/en/foxy/Concepts/About-Logging.html).
 
 
-### FAQ
+## FAQ
 
 * **How do I use SSH to connect remotely to the DeepRacer device?**
     * The Settings page in the DeepRacer device console provides interface to enable the SSH server on the DeepRacer device. After enabling the SSH on the device it is possible to remotely login to DeepRacer via CLI from your local system and execute commands. More instructions about the Settings page can be found [here](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-manage-vehicle-settings.html).
