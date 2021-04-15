@@ -299,7 +299,7 @@ As an example, here are the step by step instructions to create your first sampl
     1. The output should be similar as seen below:
 
         ```
-        root@amss-5su5:~/deepracer_ws# ros2 run hello_deepracer_package hello_deepracer_node`
+        root@amss-5su5:~/deepracer_ws# ros2 run hello_deepracer_package hello_deepracer_node
         [INFO] [1618261667.005110450] [hello_deepracer_node]: 1/10: Setting the tail light LED color values to (255, 0, 0)
         [INFO] [1618261667.439754926] [hello_deepracer_node]: 2/10: Setting the tail light LED color values to (0, 0, 255)
         [INFO] [1618261667.939710723] [hello_deepracer_node]: 3/10: Setting the tail light LED color values to (255, 0, 0)
