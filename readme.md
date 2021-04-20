@@ -1,5 +1,9 @@
 # DeepRacer Core Application Overview 
 
+<p align="center">
+<img src="/media/deepracer_circle_sticker.png" width="250" height="250" >
+</p>
+
 The AWS DeepRacer vehicle is a Wi-Fi enabled, physical vehicle that can 
 drive itself on a physical track by using a reinforcement learning model. This 
 repository contains the robot application code shipped with the AWS DeepRacer hardware. 
