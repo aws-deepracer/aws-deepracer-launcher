@@ -1,7 +1,7 @@
 # Community Projects
 
 
-## DeepBlaster
+## 1. DeepBlaster
 
 *By [Chris Miller](https://www.linkedin.com/in/chris-miller-6470751/), CEO of Cloud Brigade*
 
@@ -13,11 +13,11 @@ Use object detection models to identify objects and fire at them using a motoriz
 
 **Add-on:** Toy Blaster, Servo Controlled Turret, Arduino Microcontroller, 2nd Camera (optional)
 
-[See Instructions on Github](https://github.com/CloudBrigade/cloudbrigade-deepblaster) 
+**[See Instructions on Github](https://github.com/CloudBrigade/cloudbrigade-deepblaster)**
 
 
 
-## DeepDriver
+## 2. DeepDriver
 
 *By [Jochem Lugtenburg](https://www.linkedin.com/in/jochem-lugtenburg-8285b8141/), Developer at Relive, 2019/2020 DeepRacer Championship Cup finalist*
 
@@ -29,12 +29,10 @@ Mimics a real-world car that starts and stops at traffic lights and stop signs. 
 
 **Add-on:** N/A
 
-[See Instructions on Github](https://github.com/jochem725/deepdriver)
+**[See Instructions on Github](https://github.com/jochem725/deepdriver)**
 
 
-
-
-## RoboCat
+## 3. RoboCat
 
 *By [Martin Paradesi](https://www.linkedin.com/in/msrparadesi/), Engineering Manager at Capital One*
 
@@ -46,4 +44,4 @@ Community project that leverages OpenCV image-processing capabilities to detect 
 
 **Add-on:** [ELP Camera](https://www.amazon.com/gp/product/B07DWWSWNH/)
 
-[See Instructions on Github](https://github.com/msrparadesi/robocat_ws)
+**[See Instructions on Github](https://github.com/msrparadesi/robocat_ws)**
