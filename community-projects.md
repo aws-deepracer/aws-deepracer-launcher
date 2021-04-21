@@ -5,9 +5,9 @@
 
 *By [Chris Miller](https://www.linkedin.com/in/chris-miller-6470751/), CEO of Cloud Brigade*
 
-Use object detection models to identify objects and fire at them using a motorized toy blaster mounted on the DeepRacer. It extends the DeepRacer hardware with a 3D-printed, servo-controlled rotating turret and custom bracket. An Arduino microcontroller is used to control the rotation servo, blaster flywheels, and ammo feeder motor over a USB/Serial link. A second camera can be added to the turret and allow the DeepRacer to scan 360 degrees for objects and fire at them.
+Use object detection models to identify objects and fire at them using a motorized toy blaster mounted on DeepRacer. It extends the DeepRacer hardware with a 3D-printed, servo-controlled rotating turret and custom bracket. An Arduino microcontroller is used to control the rotation servo, blaster flywheels, and ammo feeder motor over a USB/Serial link. A second camera can be added to the turret to allow DeepRacer to scan 360 degrees for objects and fire at them.
 
-**Project ideas:** sending a robot to put out a fire, multi-tasking (navigate and fire a nerf cannon), competitive racing, strategic games.
+**Project ideas:** Sending a robot to put out a fire, multi-tasking (navigate and fire a nerf cannon), competitive racing, strategic games.
 
 **Device needed:** AWS DeepRacer or AWS DeepRacer Evo 
 
@@ -21,7 +21,7 @@ Use object detection models to identify objects and fire at them using a motoriz
 
 *By [Jochem Lugtenburg](https://www.linkedin.com/in/jochem-lugtenburg-8285b8141/), Developer at Relive, 2019/2020 DeepRacer Championship Cup finalist*
 
-Mimics a real-world car that starts and stops at traffic lights and stop signs. The logic for identifying different colors in traffic signals and detect stop signs was developed by combining various computer vision capabilities, including OpenCV image- processing functions and object-detection machine learning models. Currently the focus is on stop signs and the traffic lights. Possibilities for extension include stopping the car when a person or animal walks in front of the car and detecting a lane and driving in the center. Possibilities for scenarios with multiple DeepRacers on a track include driving slower if another DeepRacer is in front of the car or overtaking other cars using the LIDAR.
+Mimics a real-world car that starts and stops at traffic lights and stop signs. The logic for identifying different colors in traffic signals and detect stop signs was developed by combining various computer vision capabilities, including OpenCV image-processing functions and object-detection machine learning models. Currently the focus is on stop signs and the traffic lights. Possibilities for extension include training the car to stop when a person or animal walks in front of it and detecting and staying within the bounds of a lane. Possibilities for scenarios with multiple DeepRacers on a track include driving slower if another DeepRacer is in front of the car or overtaking other cars using the LIDAR sensor.
 
 **Project ideas:** Multi-racer competition, autonomous vehicle, using AI for safety and perception
 
