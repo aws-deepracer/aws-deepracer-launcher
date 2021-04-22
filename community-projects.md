@@ -34,9 +34,9 @@ Mimics a real-world car that starts and stops at traffic lights and stop signs. 
 
 ## 3. RoboCat
 
-*By [Martin Paradesi](https://www.linkedin.com/in/msrparadesi/), Engineering Manager at Capital One*
+*By [Martin Paradesi](https://www.linkedin.com/in/msrparadesi/), Organizer of AWS Machine Learning Community: NYC meetup*
 
-Community project that leverages OpenCV image-processing capabilities to detect a mouse in the image from an [infrared camera](https://smile.amazon.com/gp/product/B07DWWSWNH/) mounted on the DeepRacer. The infrared camera allows the DeepCat to detect the mouse in the dark and scare it away using a pre-configured action space with 3 actions (move forward if a mouse is detected, move back after previous action, and remain stationary).
+Community project that leverages OpenCV image-processing capabilities to detect a mouse in the image from an [infrared camera](https://smile.amazon.com/gp/product/B07DWWSWNH/) mounted on the DeepRacer. The infrared camera allows the RoboCat to detect the mouse in the dark and scare it away using a pre-configured action space with 3 actions (move forward if a mouse is detected, move back after previous action, and remain stationary).
 
 **Project ideas:** Pest control, object tracking, and in-home safety
 
