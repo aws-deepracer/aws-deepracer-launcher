@@ -1,6 +1,6 @@
 # AWS DeepRacer Sample Projects
 
-## 1.Follow the Leader
+## 1. Follow the Leader
 
 *By AWS DeepRacer team*
 
