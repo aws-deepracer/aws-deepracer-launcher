@@ -18,4 +18,8 @@ If you are a first-time user, do the following:
 1. Explore the [Follow the Leader(FTL) sample project](https://github.com/aws-deepracer/aws-deepracer-follow-the-leader-sample-project). This sample project changes the behavior of the vehicle application. Your vehicle will try to follow you as you move about a room.
 1. Explore the [Mapping sample project with ROS Noetic on Ubuntu 20.04](https://github.com/aws-deepracer/aws-deepracer-mapping-sample-project). This sample project uses SLAM with RealSense™ D435/D435i camera on ROS to map and localize an environment.
 1. Learn about the [Robot Operating System (ROS) 2](http://wiki.ros.org/doc/ROS2). The AWS DeepRacer application is based on [ROS2 Foxy](https://index.ros.org/doc/ros2/Releases/Release-Foxy-Fitzroy/). 
-1. Read [Create your own Sample Project](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/create-your-sample-project.md) guide. In this tutorial, you can learn how to create a simple `HelloDeepRacerWorld` example sample project. 
+
+
+## Build your own sample project
+
+Create a simple `HelloDeepRacerWorld` example application to understand the basics needed to build your own sample project. Read [Create your own Sample Project](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/create-your-sample-project.md) guide.
