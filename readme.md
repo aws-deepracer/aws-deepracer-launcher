@@ -20,6 +20,6 @@ If you are a first-time user, do the following:
 1. Learn about the [Robot Operating System (ROS) 2](http://wiki.ros.org/doc/ROS2). The AWS DeepRacer application is based on [ROS2 Foxy](https://index.ros.org/doc/ros2/Releases/Release-Foxy-Fitzroy/). 
 
 
-## Build your own sample project
+## Build your sample project
 
-Create a simple `HelloDeepRacerWorld` example application to understand the basics needed to build your own sample project. Read [Create your own Sample Project](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/create-your-sample-project.md) guide.
+Create a simple `HelloDeepRacerWorld` example application to understand the basics needed to build your own sample project. Read [Create your Sample Project](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/create-your-sample-project.md) guide.
