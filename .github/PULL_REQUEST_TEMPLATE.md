@@ -1,4 +1,6 @@
-**Issue Number** (if available):
+# Pull request template
+
+**Issue Number (if available)**:
 
 **Description of changes:**
 
