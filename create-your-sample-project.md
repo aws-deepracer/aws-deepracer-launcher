@@ -318,6 +318,8 @@ To understand how to create, build, and run your own sample project, see the [aw
 
 We recommend that you clone the required packages and create a new repository combining all the different ROS nodes as inn the [Follow the Leader (FTL)](https://github.com/aws-deepracer/aws-deepracer-follow-the-leader-sample-project) repository.
 
+If you create your own project, please email us at deepraceropensource@amazon.com and we’d be happy to feature it on the [Projects](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/projects.md) list.
+
 ## Troubleshooting and debugging guidelines
 
 * **What if your vehicle isn’t operating or moving the way you want it to?**

@@ -1,5 +1,6 @@
 # Community Projects
 
+If you create your own project, please email us at deepraceropensource@amazon.com and we’d be happy to feature it on the [Projects](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/projects.md) list.
 
 ## 1. DeepBlaster
 

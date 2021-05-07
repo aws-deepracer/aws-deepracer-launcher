@@ -12,7 +12,9 @@ manual modes of the AWS DeepRacer core application.
 
 The autonomous and manual modes are accessible on the **Control vehicle** page on the AWS DeepRacer device console. In the autonomous mode, you can load the reinforcement learning model trained on the AWS DeepRacer service and run inference on the physical car. In the manual mode, you can manually control the car to steer and move it using a simple joystick on the device console. You can also change the speed using the device console to control the speed at which the car is driving in both the modes.
 
-![Control vehicle console](/media/modes-control-vehicle.png)
+<p align="center">
+<img src="/media/modes-control-vehicle.png" height="350" >
+</p>
 
 Both the autonomous and manual modes leverage the **servo node** as their navigation component. You can read about how the various ROS nodes that are part of the AWS DeepRacer device software and the device console interact in the autonomous and manual mode in the following sections.
 
@@ -27,7 +29,9 @@ the point the camera and LiDAR data is published, and then a model takes image o
 image+LiDAR data as an input to the point where the servo and motors attached to the 
 wheel change angle or speed.
 
-![Autonomous state](/media/modes-autonomous-state.png)
+<p align="center">
+<img src="/media/modes-autonomous-state.png" height="350" >
+</p>
 
 ### Perception
 As part of the *perception* step, the camera images are read from the camera and 
@@ -52,7 +56,9 @@ step, the AWS DeepRacer application takes in the state information sent from the
 
 ### Action (navigation)
 
-![Navigation](/media/modes-autonomous-navigation.png)
+<p align="center">
+<img src="/media/modes-autonomous-navigation.png" height="450" >
+</p>
 
 The action step differs slightly based on the action space type on which the model 
 was trained. The AWS DeepRacer service support two types of action space types 
@@ -95,7 +101,10 @@ rectangle trackpad in the device side console. Dragging a joystick up toward
 the top of screen increases the speed, down decreases the 
 speed, right turns right and left turns left. 
 
-![Manual drive](/media/modes-manual-drive.png)
+<p align="center">
+<img src="/media/modes-manual-drive.png" height="450" >
+</p>
+
 
 The actual values are calculated as a difference between the top-left coordinate 
 of the rectangle trackpad and the coordinate of joystick itself. The `x` and `y` 
@@ -116,7 +125,9 @@ final value. For more details about this nonlinear mapping, see the following **
 
 These rescaled values are mapped to the PWM values of the servo and motor.
 
-![Manual drive flow](/media/modes-manual-flow.png)
+<p align="center">
+<img src="/media/modes-manual-flow.png" height="350" >
+</p>
 
 Distinctions between the autonomous mode action flow and the manual mode action flow include the following:
 
@@ -157,7 +168,9 @@ levels, devices, and testing scenarios.
 
 To begin understanding this in detail, consider the following curves:
 
-![Speed curves](/media/modes-equations-speed.png)
+<p align="center">
+<img src="/media/modes-equations-speed.png" height="350" >
+</p>
 
 These show the mapping of different [maximum_speed, maximum_speed/2] values in 
 `model_metadata` to the [1.0, 0.8] value on the `y` axis. It is important to note that the 
@@ -219,9 +232,10 @@ The coefficients `a` and `b` are inversely related to the maximum speed. And we 
 confirm that increasing the maximum speed increases the width of the opening of 
 parabola and moves the axis of the parabola side to side.
 
-![Possible speeds](/media/modes-equations-possiblespeed1.png)
-
-![Possible speeds](/media/modes-equations-possiblespeed1.png)
+<p align="center">
+<img src="/media/modes-equations-possiblespeed1.png" height="450" >
+<img src="/media/modes-equations-possiblespeed1.png" height="450" >
+</p>
 
 ### Additional rescaling in the continuous action space to map the network output to the original range
 
@@ -229,11 +243,11 @@ In the continuous action space, we train the neural network to output mean value
 
 This scaled `speed` value is mapped nonlinearly to a range of [0.0, 1.0] using the formula `y = ax^2 + bx`. The following examples of map the value [-1.0, 1.0] → [minimum_speed_value, maximum_speed_value] → [0.0, 1.0]. 
 
-![Possible speeds](/media/modes-equations-scaling1.png)
-
-![Possible speeds](/media/modes-equations-scaling2.png)
-
-![Possible speeds](/media/modes-equations-scaling3.png)
+<p align="center">
+<img src="/media/modes-equations-scaling1.png" height="350" >
+<img src="/media/modes-equations-scaling2.png" height="350" >
+<img src="/media/modes-equations-scaling3.png" height="350" >
+</p>
 
 ### Autonomous mode: Impact of the maximum speed percent value set by the user on the device console on the speed value
 
@@ -272,7 +286,9 @@ higher speed scale value while calculating the coefficients so that the curve is
 flatter and the impact of actual speed values is less for a lower max speed percent as shown 
 in the following example:
 
-![Possible speeds](/media/modes-manual-maxspeed.png)
+<p align="center">
+<img src="/media/modes-manual-maxspeed.png" height="450" >
+</p>
 
 **Why do we need to map the maximum speed percent values [0.0, 1.0] to another speed scale 
 value in the range [5.0, 1.0] to calculate coefficients `a` and `b`?**
