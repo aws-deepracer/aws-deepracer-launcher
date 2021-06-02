@@ -1,25 +1,25 @@
 # Creating your sample project 
 
-The AWS DeepRacer device software is now open source to enable quick prototyping and development of your own customized robotic applications by reusing or taking inspiration from the existing AWS DeepRacer core application, sample projects, or community projects. The AWS DeepRacer core application and the sample projects are built as a collection of **Robot Operating System (ROS)** packages and nodes running on the base **Ubuntu 20.04 Focal Fossa** image. The AWS DeepRacer device comes with all the prerequisite packages and libraries installed for building and running new applications developed on the ROS 2 Foxy distribution. More details about the  preinstalled set of packages and libraries on the AWS DeepRacer device and installing required build systems can be found in the [Getting Started](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/getting-started.md) section of the AWS DeepRacer open-source page. For a detailed list of tutorials with step-by-step instructions to build skills in ROS 2, see the ROS 2 [Tutorials](https://docs.ros.org/en/foxy/Tutorials.html).
+The AWS DeepRacer device software is now open source to enable quick prototyping and development of your own customized robotic applications by reusing or taking inspiration from the existing AWS DeepRacer core application, sample projects, or community projects. The AWS DeepRacer core application and the sample projects are built as a collection of **Robot Operating System (ROS)** packages and nodes running on the base **Ubuntu 20.04 Focal Fossa** image. The AWS DeepRacer device comes with all the prerequisite packages and libraries installed for building and running new applications developed on the ROS 2 Foxy distribution. For more information about the preinstalled set of packages and libraries on the AWS DeepRacer device and about installing the required build systems, see [Getting started with AWS Deepracer OpenSource](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/getting-started.md). For a detailed list of tutorials with step-by-step instructions to build skills in ROS 2, see the ROS 2 [Tutorials](https://docs.ros.org/en/foxy/Tutorials.html).
 
-This document can be used as a quick onboarding tutorial with high-level instructions to build your own sample application on the AWS DeepRacer device. A basic understanding of the ROS2 framework and associated build systems is required to develop new packages and nodes. The sample project is built as a collection of existing and newly built ROS Nodes; implementing your own idea for a sample project would typically follow these steps:
+This document can be used as a quick onboarding tutorial with high-level instructions to build your own sample application on the AWS DeepRacer device. A basic understanding of the ROS 2 framework and associated build systems is required to develop new packages and nodes. The sample project is built as a collection of existing and newly built ROS nodes; implementing your own idea for a sample project would typically follow these steps:
 
 * Learn about the basic building blocks of a ROS application, such as the workspace, packages, nodes, topic, and service.
 * Design your application to use various existing ROS packages and nodes built by the open-source ROS community or develop your own ROS nodes.
 * Build and test the nodes individually and then as an end-to-end application to verify the functionality.  
 
-## Using the ROS2 CLI
+## Using the ROS 2 CLI
 
 Explore the following resources to learn about using the ROS 2 CLI:
 * [Understanding the ROS 2 CLI](https://docs.ros.org/en/foxy/Concepts/About-Command-Line-Tools.html)
 * [Cheat sheet](https://github.com/ubuntu-robotics/ros2_cheats_sheet/blob/master/cli/cli_cheats_sheet.pdf)
 
-## Steps to create your own sample project
+## Creating your own sample project
 Follow these steps to create your own sample project.
 
 ### Create a package and ROS nodes:
 
-As a first step in creating your ROS application, you will have to create a ROS workspace, create ROS packages in the workspace, and start adding ROS nodes to the packages. If you wish to use or modify a certain AWS DeepRacer core package node, you can do so by directly adding those nodes in your workspace so that you can build them with your sample project. The [AWS DeepRacer Follow the Leader (FTL)](https://github.com/aws-deepracer/aws-deepracer-follow-the-leader-sample-project) sample project is an example in which the application uses some packages as-is from the core application, modifies some of the packages, and adds new packages as part of the implementation.
+As a first step in creating your ROS application, you create an ROS workspace, create ROS packages in the workspace, and start adding ROS nodes to the packages. If you wish to use or modify a certain AWS DeepRacer core package node, you can do so by directly adding those nodes in your workspace so that you can build them with your sample project. The [AWS DeepRacer Follow the Leader (FTL)](https://github.com/aws-deepracer/aws-deepracer-follow-the-leader-sample-project) sample project is an example in which the application uses some packages as-is from the core application, modifies some of the packages, and adds new packages as part of the implementation.
 
 ROS uses packages to organize its programs. You can think of a package as all the files that a specific ROS program contains: all its CPP files, Python files, configuration files, compilation files, launch files, and parameters files. All those files in the package are organized with the following structure:
 
@@ -42,7 +42,7 @@ ROS uses [`colcon`](https://colcon.readthedocs.io/en/released/user/how-to.html) 
 
 All the nodes that are created as part of the sample project can be launched simultaneously using a ROS launcher. For more information about launching and monitoring multiple nodes using a ROS launcher, see [Launching/monitoring multiple nodes with Launch](https://docs.ros.org/en/foxy/Tutorials/Launch-system.html). After building all the required nodes for the sample project in your workspace, open a fresh terminal and run the launch script you created. 
 
-Depending on how your sample project leverages the existing AWS DeepRacer core application, you may be required to stop the existing DeepRacer core service using this [guide](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/getting-started.md#startstop-the-deepracer-core-service). It is important to stop the service if your sample project reuses a node from the AWS DeepRacer core application which could conflict with the functionality implemented in it. 
+Depending on how your sample project leverages the existing AWS DeepRacer core application, you may be required to stop the existing AWS DeepRacer core service using this [guide](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/getting-started.md#startstop-the-deepracer-core-service). It is important to stop the service if your sample project reuses a node from the AWS DeepRacer core application which could conflict with the functionality implemented in it. 
 
 For an example demonstrating how to launch a sample project, see the GitHub instructions for the [AWS DeepRacer Follow the Leader (FTL)](https://github.com/aws-deepracer/aws-deepracer-follow-the-leader-sample-project/tree/main/deepracer_follow_the_leader_ws/ftl_launcher) sample project.
 
@@ -75,7 +75,7 @@ As an example, here are the step-by-step instructions to create your first sampl
     1. Connect a USB keyboard to your AWS DeepRacer using the USB port on the device's compute module, after the compute module is booted.
     1. In the **Username** field, enter `deepracer`.
     1. In the **Password** field, enter the device SSH password. If this is your first time logging in to the device, enter `deepracer` in the **Password** field. Reset the password, as required, before moving to the next step. You use the new password for future logins. For security reasons, use a complex or strong password phrase for the new password.
-    1. After you're logged in, open a terminal window. You can use **Search** button to find the terminal window application.
+    1. After you're logged in, open a terminal window. You can use the **Search** button to find the terminal window application.
 1. Switch to the root user before you source the ROS 2 installation:
 
         sudo su
@@ -209,7 +209,7 @@ As an example, here are the step-by-step instructions to create your first sampl
     ```
 
 
-### Creating the client
+### Create the client
 In order to create the client to call the `servo_pkg/set_led_state` service, import the `SetLedCtrlSrv` service interface:
 
     ```
@@ -219,7 +219,7 @@ In order to create the client to call the `servo_pkg/set_led_state` service, imp
     from deepracer_interfaces_pkg.srv import SetLedCtrlSrv
     ```
 
-    As part of the initialization of the node, we wait_for_service to ensure the `servo_pkg/set_led_state` service is available:
+    As part of the initialization of the node, we wait_for_service to ensure the servo_pkg/set_led_state service is available:
 
     ```
         def __init__(self):
@@ -237,7 +237,7 @@ In order to create the client to call the `servo_pkg/set_led_state` service, imp
                 )
     ```
 
-    Initialize the information required to populate the request object and call the set led service:
+    Initialize the information required to populate the request object and call the set_led service:
 
     ```
             self.color_map = [(0, 0, 255), (255, 0, 0)] # Blue and Red
@@ -324,7 +324,7 @@ If you create your own project, please email us at deepraceropensource@amazon.co
 
 * **What if your vehicle isn’t operating or moving the way you want it to?**
 
-    Follow the [instructions](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-calibrate-vehicle.html) to calibrate the mechanics of your AWS DeepRacer Vehicle. This should be done so that the vehicle performance is optimal and it behaves as expected. 
+    Follow the [instructions](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-calibrate-vehicle.html) to calibrate the mechanics of your AWS DeepRacer vehicle. This should be done so that the vehicle performance is optimal and it behaves as expected. 
 * **Is there a runtime log? How can I configure the ROS 2 logger to help in debugging?**
 
     All the logs for the ROS nodes that are running by default are streamed to the `/var/log/syslog` file. If you're running your nodes directly on the CLI, then the logs are streamed to the `stdout` on the terminal. To learn more about logging and logger configuration, see [About logging and logger configuration](https://docs.ros.org/en/foxy/Concepts/About-Logging.html).
