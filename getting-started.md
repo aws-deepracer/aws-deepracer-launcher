@@ -38,7 +38,7 @@ AVX support to work on the AWS DeepRacer device.
     4. **aws-deepracer-core**: This Debian package installs all the ROS 2 Foxy packages 
     required to provide the functionalities for the AWS DeepRacer core application. 
 
-Before you pull the changes from the GitHub repositories, make sure you have the device setup completed and have the latest version of the AWS DeepRacer. For more information about the device setup, connecting to WiFi, and the software update system, see the [Getting Started](https://aws.amazon.com/deepracer/getting-started/) guide for the AWS DeepRacer and AWS DeepRacer Evo devices.
+Before you pull the changes from the GitHub repositories, make sure you have completed the device setup and have the latest version of the AWS DeepRacer. For more information about the device setup, connecting to Wi-Fi, and the software update system, see the [Getting Started](https://aws.amazon.com/deepracer/getting-started/) guide for the AWS DeepRacer and AWS DeepRacer Evo devices.
 
 ## Installing the AWS DeepRacer Debian packages using the CLI
 
@@ -93,7 +93,7 @@ The AWS DeepRacer application includes packages for perception, decision, naviga
 
 1. The **Settings** page in the AWS DeepRacer device console provides an interface to enable the SSH server on the AWS DeepRacer device. After enabling SSH on the device, you can remotely log in to AWS DeepRacer using the CLI from your local system and execute commands. For more information about the **Settings** page, see [INspect and Manage Your AWS DeepRacer Vehicle Settings](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-manage-vehicle-settings.html).
 
-1. After enabling the SSH server, remotely connect to the AWS DeepRacer device (the local system should be on the same WiFi as the AWS DeepRacer device):
+1. After enabling the SSH server, remotely connect to the AWS DeepRacer device (the local system should be on the same Wi-Fi as the AWS DeepRacer device):
 
         ssh deepracer@<<IP_ADDRESS>>
 
@@ -167,7 +167,7 @@ To build the core packages on the device, open a terminal on the AWS DeepRacer d
 
 ## Running the latest packages
 
-To launch the built packages on the AWSDeepRacer device, open another terminal on the AWS DeepRacer device and run the following commands as the root user:
+To launch the built packages on the AWS DeepRacer device, open another terminal on the AWS DeepRacer device and run the following commands as the root user:
 
 1. Switch to the root user before you source the ROS 2 installation:
 
@@ -192,7 +192,7 @@ To launch the built packages on the AWSDeepRacer device, open another terminal o
 
 ## Updating the `deepracer-core` service:
 
-To ensure the latest packages run when the AWS DeepRacer device is booted, update the existing packages from the `/opt/aws/deepracer/lib` folder with the new packages. Run the following commands to replace the existing installation with the newly built packages.
+To ensure the latest packages run when the AWS DeepRacer device is booted, update the existing packages from the `/opt/aws/deepracer/lib` directory with the new packages. Run the following commands to replace the existing installation with the newly built packages.
 
 1. Switch to the root user:
 

@@ -5,27 +5,27 @@
 The AWS DeepRacer core application on the AWS DeepRacer device operates in three 
 modes: **autonomous mode**, **calibration mode**, and **manual mode**. The following sections provide
 details about how the AWS DeepRacer core application works in autonomous and manual 
-modes. You can follow the instructions explained in 
-[Getting Started with AWS DeepRacer OpenSource](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/getting-started.md) to set up your car to the latest 
-version of the AWS DeepRacer device software to use the autonomous, calibration, and 
-manual modes of the AWS DeepRacer core application.
+modes. You can follow the instructions in 
+[Getting started with AWS DeepRacer OpenSource](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/getting-started.md) to set up your car with the latest 
+version of the AWS DeepRacer device software to use the `autonomous`, `calibration`, and 
+`manual` modes of the AWS DeepRacer core application.
 
-The autonomous and manual modes are accessible on the **Control vehicle** page on the AWS DeepRacer device console. In the autonomous mode, you can load the reinforcement learning model trained on the AWS DeepRacer service and run inference on the physical car. In the manual mode, you can manually control the car to steer and move it using a simple joystick on the device console. You can also change the speed using the device console to control the speed at which the car is driving in both the modes.
+The `autonomous` and `manual` modes are accessible on the **Control vehicle** page of the AWS DeepRacer device console. In `autonomous` mode, you can load the reinforcement learning model trained on the AWS DeepRacer service and run inference on the physical car. In `manual` mode, you can manually control the car to steer and move it using a simple joystick on the device console. You can also change the speed using the device console to control the speed at which the car is driving in both the modes.
 
 <p align="center">
 <img src="/media/modes-control-vehicle.png" height="350" >
 </p>
 
-Both the autonomous and manual modes leverage the **servo node** as their navigation component. You can read about how the various ROS nodes that are part of the AWS DeepRacer device software and the device console interact in the autonomous and manual mode in the following sections.
+Both `autonomous` and `manual` mode leverage the **servo node** as their navigation component. You can read about how the various ROS nodes that are part of the AWS DeepRacer device software and the device console interact in `autonomous` and `manual` mode in the following sections.
 
-## Autonomous mode
+## `Autonomous` mode
 
 While running inference on the reinforcement learning model loaded in
-*autonomous* mode, the AWS DeepRacer device takes in the state information required 
+`autonomous` mode, the AWS DeepRacer device takes in the state information required 
 at the rate of the camera sensor and takes an action to either increase or decrease the 
 speed and steering angle. Each **perception-inference-action** step involves a 
-pipeline of a series of ROS messages published or subscribed at various nodes, from 
-the point the camera and LiDAR data is published, and then a model takes image or
+pipeline of a series of ROS messages published or subscribed at various nodes from 
+the point the camera and LiDAR data is published. Then a model takes the image or
 image+LiDAR data as an input to the point where the servo and motors attached to the 
 wheel change angle or speed.
 
@@ -94,9 +94,9 @@ At this point, the steering value is scaled based on its
 maximum value and the speed value is nonlinearly 
 scaled to the range of [0.0, 1.0]. For more details about this nonlinear scaling, see the following **Nonlinear speed-mapping equations** section.
 
-## Manual mode
+## `Manual` mode
 
-In the manual mode, the car can be driven manually using a joystick on a 
+In `manual` mode, you can drive the car manually using a joystick on a 
 rectangle trackpad in the device side console. Dragging a joystick up toward 
 the top of screen increases the speed, down decreases the 
 speed, right turns right and left turns left. 
@@ -119,7 +119,7 @@ joystick trackpad into concentric rectangles of stepped values, allowing
 better feedback and control for the user to move the joystick.
 
 * **Use the maximum speed percentage and throttle as an input to calculate the 
-non linear mapping**: This allows us to flatten the curve if the maximum speed 
+nonlinear mapping**: This allows us to flatten the curve if the maximum speed 
 percentage is lower, thereby reducing the impact of the raw joystick value on the 
 final value. For more details about this nonlinear mapping, see the following **Nonlinear speed-mapping equations** section.
 
@@ -129,22 +129,22 @@ These rescaled values are mapped to the PWM values of the servo and motor.
 <img src="/media/modes-manual-flow.png" height="350" >
 </p>
 
-Distinctions between the autonomous mode action flow and the manual mode action flow include the following:
+Distinctions between the `autonomous` mode action flow and the `manual` mode action flow include the following:
 
 * Both steering angle and speed values are already in the range of [-1.0, 1.0] 
-and there is no minimum and maximum speed associated with this. Autonomous mode 
+and there is no minimum and maximum speed associated with this. `Autonomous` mode 
 has an additional mapping required to use the values passed in the `model_metatdata` JSON.
 
-* The maximum speed value is used to nonlinearly scale the speed, unlike in autonomous mode, where the maximum throttle value is used to get a fraction of the total value calculated.
+* The maximum speed value is used to nonlinearly scale the speed, unlike in `autonomous` mode, where the maximum throttle value is used to get a fraction of the total value calculated.
 
 ### Nonlinear speed-mapping equations
 
-In the AWS DeepRacer device, we do not have a mechanism to know the actual speed 
-of the car and depend only on the raw PWM values to control the speed. 
+The AWS DeepRacer device does not have a mechanism to detect the actual speed 
+of the car and depends on the raw PWM values to control the speed. 
 These PWM values have nonlinear mapping to the RPM of the wheel, which makes the 
 car go faster or slower. In order to connect the magnitude of speed to the actual 
 RPM on the car, we use a nonlinear mapping of the input speed values as a proxy 
-of the PWM values responsible for increasing speed. One of the important 
+for the PWM values responsible for increasing speed. One of the important 
 functions in the AWS DeepRacer device-side software is a method that maps the action 
 space value for speed into this transformed car speed value. 
 
@@ -160,7 +160,7 @@ The equation corresponds to a parabola. In our use case, we have to find a parab
 
 The values 1.0 and 0.8 correspond to the percent of speed that needs 
 to be nonlinearly mapped to the maximum speed and the half of maximum speed values 
-that are passed as part of the `model_metadata.json` file (in autonomous mode). It 
+that are passed as part of the `model_metadata.json` file (in `autonomous` mode). It 
 implies that for a value of half of maximum speed in the `model_metadata.json`, we 
 consider 80% of PWM value. The mapping values selected have been empirically 
 tested to provide a close and consistent mapping under various vehicle battery 
@@ -228,7 +228,7 @@ Replace `b` in equation 3:
 
 > `a =  - (1 / maximum_speed\*\*2) * 1.2`
 
-The coefficients `a` and `b` are inversely related to the maximum speed. And we can 
+The coefficients `a` and `b` are inversely related to the maximum speed. We can 
 confirm that increasing the maximum speed increases the width of the opening of 
 parabola and moves the axis of the parabola side to side.
 
@@ -249,9 +249,9 @@ This scaled `speed` value is mapped nonlinearly to a range of [0.0, 1.0] using t
 <img src="/media/modes-equations-scaling3.png" height="350" >
 </p>
 
-### Autonomous mode: Impact of the maximum speed percent value set by the user on the device console on the speed value
+### `Autonomous` mode: Impact of the maximum speed percent value set by the user on the device console on the speed value
 
-The AWS DeepRacer console allows the user to set the maximum speed percent values between [0, 100]%, with a default value set to 50%.  In autonomous mode, the value set from the front end is passed back to the navigation node via the `control_node`, where the nonlinearly scaled values are multiplied to this percentage. 
+The AWS DeepRacer console allows the user to set the maximum speed percent values between [0, 100]%, with a default value set to 50%.  In `autonomous` mode, the value set from the front end is passed back to the navigation node via the `control_node`, where the nonlinearly scaled values are multiplied to this percentage. 
 
 For example, if the user has set the maximum speed value to be 40%, and the model selected has a maximum speed of 0.8 m/s, then the throttle value set in the servo message in the navigation node for a neural network output speed of 0.4 m/s is:
 
@@ -270,9 +270,9 @@ For the same maximum speed threshold of 40% and maximum speed of 0.8 m/s, if the
 > servo_msg.throttle = maximum_speed_threshold * non_linear_scaled_speed*
 >                    = 0.4 * 0.475 = 0.19
 
-### Manual mode: Math behind the nonlinear speed mapping equations
+### `Manual` mode: Math behind the nonlinear speed mapping equations
 
-As seen in the continuous action space in autonomous mode, we now need to nonlinearly 
+As seen in the continuous action space in `autonomous` mode, we now need to nonlinearly 
 map the raw value obtained from the joystick movement to the PWM values of the servo 
 and motor for the car to move.
 
@@ -355,11 +355,11 @@ a =  -0.17751479289940836, b =  0.8461538461538464
 mapped_speed = -0.17751479289940836 * 0.09 + 0.8461538461538464 * 0.3 = 0.237869822
 ```
 
-After we have the final categorizing and mapping completed for the `speed` and `steering_angle`, we have the output in the range of [-1.0, 1.0]. These values are passed to the servo node, similar to the autonomous mode, to move the car.
+After we have the final categorizing and mapping completed for the `speed` and `steering_angle`, we have the output in the range of [-1.0, 1.0]. These values are passed to the servo node, similar to `autonomous` mode, to move the car.
 
 ## Setting the servo and motor PWM duty values
 
-The servo node expects the `speed` and `steering_angle` values sent as part of the servo message to be in the range of [-1.0, 1.0]. For the autonomous mode, the speed will be in the range of [0.0, 1.0], as we do not support reverse driving for our car. 
+The servo node expects the `speed` and `steering_angle` values sent as part of the servo message to be in the range of [-1.0, 1.0]. In `autonomous` mode, the speed is in the range of [0.0, 1.0], as we do not support reverse driving for our car. 
 
 The AWS DeepRacer device is an open-loop system and does not have feedback to recognize the speed of the car. We linearly map the value of `speed` and `steering_angle` obtained at the servo node to the duty cycle values, which regulate the RPM of the servo and motor. The exact value written as the PWM duty on to the motor and servo file further depends on the bounding calibration values set during the calibration flow. 
 
