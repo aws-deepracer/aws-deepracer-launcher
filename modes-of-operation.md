@@ -25,8 +25,8 @@ While running inference on the reinforcement learning model loaded in
 at the rate of the camera sensor and takes an action to either increase or decrease the 
 speed and steering angle. Each **perception-inference-action** step involves a 
 pipeline of a series of ROS messages published or subscribed at various nodes from 
-the point the camera and LiDAR data is published. Then a model takes the image or
-image+LiDAR data as an input to the point where the servo and motors attached to the 
+the point the camera and LiDAR data is published; then a model takes the image or
+image+LiDAR data as an input; to the point where the servo and motors attached to the 
 wheel change angle or speed.
 
 <p align="center">
@@ -152,7 +152,7 @@ It's implemented by mapping the [maximum speed, half of the maximum
 speed] from the action space to the values of [1.0, 0.8] using the quadratic 
 equation: 
 
-> `y = ax\*\*2 + bx`
+> `y = ax**2 + bx`
 
 The equation corresponds to a parabola. In our use case, we have to find a parabola that contains both the values [maximum_speed, 1.0] and [maximum_speed/2, 0.8].  
 
@@ -175,7 +175,7 @@ To begin understanding this in detail, consider the following curves:
 These show the mapping of different [maximum_speed, maximum_speed/2] values in 
 `model_metadata` to the [1.0, 0.8] value on the `y` axis. It is important to note that the 
 these values also pass through [0, 0], indicating that there is no constant `c` value in 
-our parabola expression, `ax\*\*2 + bx + c`.
+our parabola expression, `ax**2 + bx + c`.
 
 ### Building some intuition around the mapping curves
 
@@ -195,7 +195,7 @@ We have already seen that the value of `c` in our expression is set to 0.
 
 Consider the equation of the parabola:
 
-> `y = ax\*\*2 + bx`
+> `y = ax**2 + bx`
 
 In our code, we notify the anchor values used for mapping as `DEFAULT_SPEED_SCALES 
 = [1.0, 0.8]`. With this notation, we can find the value of coefficients `a` and 
@@ -204,13 +204,13 @@ DEFAULT_SPEED_SCALES[0]`) and (`maximum_speed/2, DEFAULT_SPEED_SCALES[1]`)
 
 Replace the values of `x` and `y` in the parabola equation:
 
-> `DEFAULT_SPEED_SCALES[0] = a * maximum_speed\*\*2 + b * maximum_speed`
+> `DEFAULT_SPEED_SCALES[0] = a * maximum_speed**2 + b * maximum_speed`
 
-> `DEFAULT_SPEED_SCALES[1] = (a * maximum_speed\*\*2 ) / 4 + (b * maximum_speed) / 2`
+> `DEFAULT_SPEED_SCALES[1] = (a * maximum_speed**2 ) / 4 + (b * maximum_speed) / 2`
 
 Solve for `a` and `b`:
 
-> `4 * DEFAULT_SPEED_SCALES[1] = (a * maximum_speed\*\*2 ) + 2 * (b * maximum_speed)`
+> `4 * DEFAULT_SPEED_SCALES[1] = (a * maximum_speed**2 ) + 2 * (b * maximum_speed)`
 
 > `b = (1  / maximum_speed) * ( 4 * DEFAULT_SPEED_SCALES[1]  - DEFAULT_SPEED_SCALES[0])`
 
@@ -218,15 +218,15 @@ Solve for `a` and `b`:
 
 Replace `b` in equation 3:
 
-> `DEFAULT_SPEED_SCALES[1] = (a * maximum_speed\*\*2 ) / 4 + ( 4 * DEFAULT_SPEED_SCALES[1]  - DEFAULT_SPEED_SCALES[0] ) *  maximum_speed/ (2 * maximum_speed)`
+> `DEFAULT_SPEED_SCALES[1] = (a * maximum_speed**2 ) / 4 + ( 4 * DEFAULT_SPEED_SCALES[1]  - DEFAULT_SPEED_SCALES[0] ) *  maximum_speed/ (2 * maximum_speed)`
 
-> `4 * DEFAULT_SPEED_SCALES[1] = (a * maximum_speed\*\*2 ) + 2 * ( 4 * DEFAULT_SPEED_SCALES[1]  - DEFAULT_SPEED_SCALES[0])`
+> `4 * DEFAULT_SPEED_SCALES[1] = (a * maximum_speed**2 ) + 2 * ( 4 * DEFAULT_SPEED_SCALES[1]  - DEFAULT_SPEED_SCALES[0])`
 
-> `a = (4 * DEFAULT_SPEED_SCALES[1] - 8 * DEFAULT_SPEED_SCALES[1] + 2 * DEFAULT_SPEED_SCALES[0] ) / maximum_speed\*\*2`
+> `a = (4 * DEFAULT_SPEED_SCALES[1] - 8 * DEFAULT_SPEED_SCALES[1] + 2 * DEFAULT_SPEED_SCALES[0] ) / maximum_speed**2`
 
-> `a = (1 / maximum_speed\*\*2) * ( 2 * DEFAULT_SPEED_SCALES[0] - 4 * DEFAULT_SPEED_SCALES[1] )`
+> `a = (1 / maximum_speed**2) * ( 2 * DEFAULT_SPEED_SCALES[0] - 4 * DEFAULT_SPEED_SCALES[1] )`
 
-> `a =  - (1 / maximum_speed\*\*2) * 1.2`
+> `a =  - (1 / maximum_speed**2) * 1.2`
 
 The coefficients `a` and `b` are inversely related to the maximum speed. We can 
 confirm that increasing the maximum speed increases the width of the opening of 
@@ -277,7 +277,7 @@ map the raw value obtained from the joystick movement to the PWM values of the s
 and motor for the car to move.
 
 As we do not have a maximum speed value defined to calculate the coefficients of the 
-equation `y = ax\*\*2 + bx`, we use the maximum speed percent from the device console to map to a 
+equation `y = ax**2 + bx`, we use the maximum speed percent from the device console to map to a 
 range of [1.0, 5.0] speed scale values. This allows us to recalculate the curve for 
 each maximum speed percent value and use that to map it to the throttle value in the servo message.
 
