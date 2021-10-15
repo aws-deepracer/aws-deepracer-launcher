@@ -81,7 +81,7 @@ The AWS DeepRacer application includes packages for perception, decision, naviga
 * [otg_control_node](https://github.com/aws-deepracer/aws-deepracer-systems-pkg): This node is responsible for enabling and disabling the OTG connection and publishing the connection status.
 * [network_monitor_node](https://github.com/aws-deepracer/aws-deepracer-systems-pkg): This node is responsible for connecting to WiFi based on the configuration file on USB and communicating the network connection status.
 * [device_info_node](https://github.com/aws-deepracer/aws-deepracer-device-info-pkg): This node provides hardware and software version information.
-* [battery_node](https://github.com/aws-deepracer/i2c_pkg): This node reads and publishes vehicle battery level information.
+* [battery_node](https://github.com/aws-deepracer/aws-deepracer-i2c-pkg): This node reads and publishes vehicle battery level information.
 * [model_optimizer_node](https://github.com/aws-deepracer/aws-deepracer-model-optimizer-pkg): This node runs the model optimizer on the selected machine learning model.
 * [status_led_node](https://github.com/aws-deepracer/aws-deepracer-status-led-pkg): This node controls blinking and solid light functionality for the status LEDs found on the side of the AWS DeepRacer device. 
 * [usb_monitor_node](https://github.com/aws-deepracer/aws-deepracer-usb-monitor-pkg): This node monitors USB connections and publishes a notification if a required file is found. 
