@@ -96,10 +96,10 @@ def generate_launch_description():
         name='model_optimizer_node'
     )
     rplidar_node = Node(
-        package='rplidar_ros',
+        package='rplidar_ros2',
         namespace='rplidar_ros',
-        executable='rplidarNode',
-        name='rplidarNode',
+        executable='rplidar_scan_publisher',
+        name='rplidar_scan_publisher',
         parameters=[{
                 'serial_port': '/dev/ttyUSB0',
                 'serial_baudrate': 115200,
