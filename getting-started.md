@@ -60,7 +60,7 @@ The AWS DeepRacer application includes packages for perception, decision, naviga
 **Perception**
 
 * [camera_node](https://github.com/aws-deepracer/aws-deepracer-camera-pkg): This node reads and publishes data from the camera. 
-* [rplidar_node](https://github.com/youngday/rplidar_ros2): This open-source package supports reading and publishing LiDAR data from the connected RPLidar device.
+* [rplidar_node](https://github.com/Slamtec/rplidar_ros/tree/ros2): This open-source package supports reading and publishing LiDAR data from the connected RPLidar device.
 * [sensor_fusion_node](https://github.com/aws-deepracer/aws-deepracer-sensor-fusion-pkg): This node combines and publishes camera and LiDAR data (if one is present) as a single message.
 
 **Decision**
