@@ -23,4 +23,3 @@ If you are a first-time user, do the following:
 
 Create a simple `HelloDeepRacerWorld` example application to understand the basics needed to build your own sample project. Read the [Create your sample project](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/create-your-sample-project.md) guide.
 
-If you create your own project, please email us at deepraceropensource@amazon.com and we’d be happy to feature it on the [Projects](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/projects.md) list.
