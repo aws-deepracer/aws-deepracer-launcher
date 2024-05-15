@@ -9,7 +9,7 @@ drive itself on a physical track by using a reinforcement learning model. This
 repository contains the robot application code shipped with the AWS DeepRacer hardware. 
 It also includes examples demonstrating how you can extend the AWS DeepRacer application for new 
 scenarios. For example, the [Follow the Leader (FTL)](https://github.com/aws-deepracer/aws-deepracer-follow-the-leader-sample-project) sample project shows how you can use object detection and 
-navigation to modify the vehicle application to follow you as you move about a room.
+navigation to modify the vehicle application to follow you as you move about in a room.
 
 If you are a first-time user, do the following:
 
